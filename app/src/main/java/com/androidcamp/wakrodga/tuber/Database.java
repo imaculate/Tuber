@@ -8,12 +8,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 /**
  * Created by demouser on 8/4/16.
  */
 public class Database {
 
     private static final String TAG = "bla";
+    public static ArrayList<Tutor> tutors = new ArrayList<>();
     private OnTutorListener onTutorListener;
     private OnStudentListener onStudentListener;
 
@@ -53,6 +56,7 @@ public class Database {
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
                 Tutor tutor = dataSnapshot.getValue(Tutor.class);
+                tutors.add(tutor);
                 onTutorListener.onTutorReady(tutor);
             }
 
