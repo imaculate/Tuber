@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        Intent i = new Intent(MainActivity.this, SearchActivity.class);
-        startActivity(i);
 
         /*ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
