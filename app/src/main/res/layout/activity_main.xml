@@ -16,7 +16,8 @@
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@color/colorPrimary"
+        android:minWidth="400dp"
+        app:tabBackground="@color/pink"
         android:id="@+id/tabslayout"
         app:tabTextColor="@color/colorPrimaryDark">
 
