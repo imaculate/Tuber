@@ -160,9 +160,13 @@ public class Database {
         return new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Tutor tutor = dataSnapshot.getValue(Tutor.class);
-                tutors.add(tutor);
-                Log.d("VALUE EVENT LISTENER", tutors.size() + "");
+                for (DataSnapshot data: dataSnapshot.getChildren()) {
+                    Tutor tutor = data.getValue(Tutor.class);
+                    tutors.add(tutor);
+                    Log.d("VALUE EVENT LISTENER", tutor.country + "");
+
+                }
+
             }
 
             @Override
