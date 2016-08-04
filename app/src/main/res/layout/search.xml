@@ -57,7 +57,7 @@
                 android:layout_height="48dp"
                 android:layout_width="48dp"
                 android:id = "@+id/place_icon2"
-                android:src="@drawable/place"
+                android:src="@drawable/pin_drop"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 />
@@ -153,11 +153,28 @@
 
         </RelativeLayout>
 
+        <CheckBox
+            android:id="@+id/frontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Frontal Lessons" />
+
+        <CheckBox
+            android:id="@+id/online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Online Lessons"
+            android:checked="true" />
+
 
 
 
         <Button
             android:id="@+id/btnSubmit"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
