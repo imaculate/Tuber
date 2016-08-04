@@ -7,6 +7,7 @@ import java.util.Map;
  * Created by demouser on 8/4/16.
  */
 public class Tutor {
+
     public String city;
     public String country;
     public Boolean frontal;
@@ -39,9 +40,6 @@ public class Tutor {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public String getCountry() {
         return country;
@@ -71,6 +69,15 @@ public class Tutor {
         return name;
     }
 
+    public String getReputation() {
+        return reputation + "/5";
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+
     public void setName(String name) {
         this.name = name;
     }
@@ -99,9 +106,8 @@ public class Tutor {
         this.image = image;
     }
 
-    public Double getReputation() {
-        return reputation;
-    }
+
+
 
     public void setReputation(Double reputation) {
         this.reputation = reputation;
