@@ -38,14 +38,13 @@
     <string name="subjects_prompt">Choose a city</string>
     <string-array name="subjects_arrays">
         <item>Choose a subject</item>
-        <item>Android</item>
-        <item>Java Programming</item>
-        <item>C Programming</item>
+        <item>android</item>
+        <item>Java programming</item>
+        <item>English lessons</item>
         <item>C# Programming</item>
-        <item>C++ Programming</item>
-        <item>Yoga</item>
-        <item>Guitar Lessons</item>
-        <item>Web development</item>
+        <item>Algebra</item>
+        <item>Yoga classes</item>
+        <item>web development</item>
     </string-array>
 
     <string name="languages_prompt">Choose a city</string>
