@@ -190,7 +190,7 @@ public class AllTutorsFragment extends Fragment {
                 holder.name =  (TextView) view.findViewById(R.id.name);
                 holder.reputation = (TextView) view.findViewById(R.id.rating);
                 holder.city = (TextView) view.findViewById(R.id.city);
-                holder.city = (TextView) view.findViewById(R.id.country);
+                holder.country = (TextView) view.findViewById(R.id.country);
                 holder.image = (ImageView)view.findViewById(R.id.tutor_image);
                 view.setTag(holder);
             }else{

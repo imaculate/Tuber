@@ -19,10 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchActivity"></activity>
-        <activity
-            android:name=".dummy"
-            android:label="@string/title_activity_dummy"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+
     </application>
 
 </manifest>

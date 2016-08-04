@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     @Override
     public void onFragmentInteraction() {
 
-        
+
     }
 
     @Override
