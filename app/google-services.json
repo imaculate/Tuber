@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "167481639775",
+    "firebase_url": "https://tuber-1b7ac.firebaseio.com",
+    "project_id": "tuber-1b7ac",
+    "storage_bucket": "tuber-1b7ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167481639775:android:7eefdd6b28bfad0f",
+        "android_client_info": {
+          "package_name": "com.androidcamp.wakrodga"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167481639775-tehn63217jmi83ml52e9hphpqutm3mra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.androidcamp.wakrodga",
+            "certificate_hash": "EEE5A5FE3F3652795057AD0880B09A9F80E60786"
+          }
+        },
+        {
+          "client_id": "167481639775-obs8q25kudahlvhag9tuea57uib6b5sg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiMYF0mGawXyyRPH1TZniN5cXXlFCJ1A4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167481639775-obs8q25kudahlvhag9tuea57uib6b5sg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
