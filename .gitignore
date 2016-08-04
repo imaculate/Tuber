@@ -24,3 +24,5 @@
 	app/app.iml
 	build/generated/mockable-android-24.jar
 	local.properties
+	.DS_Store
+	/app/.DS_Store
