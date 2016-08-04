@@ -2,10 +2,15 @@ package com.androidcamp.wakrodga.tuber;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.LineChart;
+
+import az.plainpie.PieView;
 
 public class Statistics extends AppCompatActivity {
 
@@ -13,7 +18,26 @@ public class Statistics extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
+
+        Database database = new Database();
+
+
+        database.addOnTutorReadyListener(new Database.OnTutorListener() {
+            @Override
+            public void onTutorReady(Tutor tutor) {
+                Database.tutors.add(tutor);
+            }
+        });
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        PieView pieView = (PieView) findViewById(R.id.pieView);
+        pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent));
+        pieView.setMainBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
