@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Database database = new Database();
         final ArrayList<Tutor> tutors = new ArrayList<>();
 
+
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
             public void onTutorReady(Tutor tutor) {

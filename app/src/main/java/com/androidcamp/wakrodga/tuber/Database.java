@@ -15,9 +15,14 @@ public class Database {
 
     private static final String TAG = "bla";
     private OnTutorListener onTutorListener;
+    private OnStudentListener onStudentListener;
 
     public interface OnTutorListener {
         public void onTutorReady(Tutor tutor);
+    }
+
+    public interface  OnStudentListener {
+        public void onStudentReady(Student student);
     }
 
     public Database() {
@@ -28,11 +33,22 @@ public class Database {
         this.onTutorListener = onTutorListener;
     }
 
+    public void addOnStudentReadyListener(OnStudentListener onStudentListener) {
+        this.onStudentListener = onStudentListener;
+    }
+
     private void addListeners() {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference tutorsRef = rootRef.child("tutors");
+        tutorsRef.addChildEventListener(getTutorListener());
 
-        ChildEventListener childEventListener = new ChildEventListener() {
+        DatabaseReference studentsRef = rootRef.child("students");
+        studentsRef.addChildEventListener(getStudentListener());
+
+    }
+
+    private ChildEventListener getTutorListener() {
+        return new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
@@ -45,7 +61,6 @@ public class Database {
                 Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
 
                 // A comment has changed, use the key to determine if we are displaying this
-                // comment and if so displayed the changed comment.
                 Tutor newComment = dataSnapshot.getValue(Tutor.class);
                 String commentKey = dataSnapshot.getKey();
 
@@ -78,13 +93,61 @@ public class Database {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "postComments:onCancelled", databaseError.toException());
-               // Toast.makeText(mContext, "Failed to load comments.",
-                 //       Toast.LENGTH_SHORT).show();
+                // Toast.makeText(mContext, "Failed to load comments.",
+                //       Toast.LENGTH_SHORT).show();
             }
         };
-        tutorsRef.addChildEventListener(childEventListener);
+    }
 
-        //Log.d("TUTORS", tutors.getKey());
+    private ChildEventListener getStudentListener() {
+        return new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
+                Student student = dataSnapshot.getValue(Student.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
+
+                // A comment has changed, use the key to determine if we are displaying this
+                Student newComment = dataSnapshot.getValue(Student.class);
+                String commentKey = dataSnapshot.getKey();
+
+                // ...
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.d(TAG, "onChildRemoved:" + dataSnapshot.getKey());
+
+                // A comment has changed, use the key to determine if we are displaying this
+                // comment and if so remove it.
+                String commentKey = dataSnapshot.getKey();
+
+                // ...
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
+
+                // A comment has changed position, use the key to determine if we are
+                // displaying this comment and if so move it.
+                Student movedComment = dataSnapshot.getValue(Student.class);
+                String commentKey = dataSnapshot.getKey();
+
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "postComments:onCancelled", databaseError.toException());
+                // Toast.makeText(mContext, "Failed to load comments.",
+                //       Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 
 }
