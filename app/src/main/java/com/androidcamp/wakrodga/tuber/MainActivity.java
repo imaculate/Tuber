@@ -33,16 +33,20 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static String TAG_FAV = "fav_tutors";
 
 
+
     public static String TITLE_ALL = "ALL TUTORS";
     public static String TITLE_MY = "MY TUTORS";
     public static String TITLE_FAV = "FAVORITES";
+
+    public static final ArrayList<Tutor> tutors = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Database database = new Database();
-        final ArrayList<Tutor> tutors = new ArrayList<>();
+
 
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         FragmentManager fragMan = getSupportFragmentManager();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(fragMan);
@@ -126,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     @Override
     public void onFragmentInteraction() {
 
-
+        
     }
 
     @Override
