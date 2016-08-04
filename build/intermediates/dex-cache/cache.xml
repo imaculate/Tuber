@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="3f8a38c70b3fefea0fe7d00435940c0da13e95e1">
-        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b9a40f617308b3a437d6f6d53267613a1c67e114/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />

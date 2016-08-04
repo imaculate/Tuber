@@ -81,8 +81,19 @@ public class AllTutorsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_all_tutors, container, false);
+
+
+        Database database = new Database();
+        final ArrayList<Tutor> tutors = new ArrayList<>();
+
+        database.addOnTutorReadyListener(new Database.OnTutorListener() {
+            @Override
+            public void onTutorReady(Tutor tutor) {
+                tutors.add(tutor);
+            }
+        });
         MyAdapter adapter = new MyAdapter();
-        adapter.new DownloadListTask().execute();
+        adapter.setTutors();
         listView = (ListView) v.findViewById(R.id.tutor_list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -136,85 +147,24 @@ public class AllTutorsFragment extends Fragment {
     }
 
     private class MyAdapter extends BaseAdapter {
-        private ArrayList<Tutor> globalTutors = new ArrayList<Tutor>();
+        private final ArrayList<Tutor> globalTutors = new ArrayList<Tutor>();
 
 
 
-        private class DownloadListTask extends AsyncTask<String, Void, ArrayList<Tutor>> {
-            protected ArrayList<Tutor> doInBackground(String...urls){
-                return loadJson();
 
-            }
-            protected void onPostExecute(ArrayList<Tutor> Tutors){
-                globalTutors = Tutors;
-                notifyDataSetChanged();
+        public void setTutors(){
+           Database database = new Database();
+            database.addOnTutorReadyListener(new Database.OnTutorListener(){
 
-            }
-        }
-
-        @TargetApi(Build.VERSION_CODES.KITKAT)
-        public ArrayList<Tutor> loadJson(){
-            URL ur = null;
-            ArrayList<Tutor> Tutors = new ArrayList<Tutor>();
-            try {
-                ur = new URL("https://tuber-bc186.firebaseio.com/");
-                HttpURLConnection conn = null;
-                StringBuilder sb = new StringBuilder();
-                try {
-                    conn = (HttpURLConnection)ur.openConnection();
-                    InputStream is = conn.getInputStream();
-
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                    String line = "";
-                    while((line=reader.readLine())!=null){
-                        sb.append(line);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }finally {
-                    conn.disconnect();
+                @Override
+                public void onTutorReady(Tutor tutor) {
+                    globalTutors.add(tutor);
                 }
 
 
+            });
+            notifyDataSetChanged();
 
-
-                JSONObject json = new JSONObject();
-
-                Tutor tutor = new Tutor();
-
-                JSONArray jsonArr = new JSONArray();
-                try {
-                    jsonArr = (JSONArray) new JSONObject(sb.toString()).get("tutors");
-                } catch (JSONException e) {
-
-                    e.printStackTrace();
-                }
-                for(int i =0; i<jsonArr.length();i++){
-                    try {
-                        json = (JSONObject)jsonArr.get(i);
-
-                        try {
-                            tutor.setName(json.getString("name"));
-                            tutor.setCity(json.getString("city"));
-                            tutor.setImage(json.getString("image"));
-                            tutor.setReputation(json.getString("reputation"));
-                            tutor.setImage(json.getString("image"));
-                            Tutors.add(tutor);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }
-                return Tutors;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-
-            return Tutors;
         }
 
         public int getCount(){
