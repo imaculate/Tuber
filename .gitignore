@@ -1,4 +1,5 @@
 .gradle/
+gradle/wrapper
 .gradle/2.10/taskArtifacts/cache.properties
 .gradle/2.10/taskArtifacts/cache.properties.lock
 .gradle/2.10/taskArtifacts/fileHashes.bin
