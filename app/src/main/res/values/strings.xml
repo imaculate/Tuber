@@ -2,22 +2,22 @@
     <string name="app_name">Tuber</string>
 
     <string name="country_prompt">Choose a country</string>
-        <string-array name="country_arrays">
-            <item>Choose a country</item>
-            <item>Malaysia</item>
-            <item>United States</item>
-            <item>Indonesia</item>
-            <item>France</item>
-            <item>Italy</item>
-            <item>Singapore</item>
-            <item>New Zealand</item>
-            <item>India</item>
-            <item>Israel</item>
-            <item>England</item>
-            <item>Croatia</item>
-            <item>Poland</item>
-            <item>South Africa</item>
-        </string-array>
+    <string-array name="country_arrays">
+        <item>Choose a country</item>
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+        <item>Israel</item>
+        <item>England</item>
+        <item>Croatia</item>
+        <item>Poland</item>
+        <item>South Africa</item>
+    </string-array>
 
 
     <string name="city_prompt">Choose a city</string>
@@ -55,7 +55,6 @@
         <item>Spanish</item>
 
     </string-array>
-
 
 
 </resources>
