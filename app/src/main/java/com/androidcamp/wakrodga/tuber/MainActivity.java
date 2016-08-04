@@ -19,12 +19,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final ArrayList<Tutor> tutors = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Database database = new Database();
-        final ArrayList<Tutor> tutors = new ArrayList<>();
 
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        Intent i = new Intent(MainActivity.this,SearchActivity.class);
+        startActivity(i);
     }
 
     @Override
