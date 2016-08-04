@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
         FragmentManager fragMan = getSupportFragmentManager();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(fragMan);
