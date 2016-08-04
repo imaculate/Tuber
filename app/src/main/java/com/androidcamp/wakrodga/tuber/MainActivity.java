@@ -59,11 +59,13 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
+
         FragmentManager fragMan = getSupportFragmentManager();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(fragMan);
 
-        // Set up the ViewPager with the sections adapter.
+        // Set up the ViewPager  with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);

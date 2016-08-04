@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +22,10 @@ public class SearchActivity extends AppCompatActivity {
     private Spinner spinner3;
     private Spinner spinner4;
     private Button btnSubmit;
+    private CheckBox checkBox1;
+    private CheckBox checkBox2;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,9 @@ public class SearchActivity extends AppCompatActivity {
         spinner2 = (Spinner) findViewById(R.id.cities);
         spinner3 = (Spinner) findViewById(R.id.subjects);
         spinner4 = (Spinner) findViewById(R.id.languages);
+        checkBox1 = (CheckBox) findViewById(R.id.frontal);
+        checkBox2 = (CheckBox) findViewById(R.id.online);
+
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
@@ -50,12 +58,16 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
+
                 Toast.makeText(SearchActivity.this,
                         "OnClickListener : " +
                                 "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem())+
                                 "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem())+
                                 "\nSpinner 3 : "+ String.valueOf(spinner3.getSelectedItem())+
-                                "\nSpinner 4 : "+ String.valueOf(spinner4.getSelectedItem())
+                                "\nSpinner 4 : "+ String.valueOf(spinner4.getSelectedItem())+
+                                "\ncheckbox 1 : "+ checkBox1.isChecked()+
+                                "\ncheckbox 2 : "+ checkBox2.isChecked()
                         ,
                         Toast.LENGTH_SHORT).show();
             }
