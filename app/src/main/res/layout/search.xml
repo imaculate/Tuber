@@ -154,18 +154,21 @@
         </RelativeLayout>
 
         <CheckBox
+            android:layout_marginTop="20dp"
             android:id="@+id/frontal"
             android:layout_width="wrap_content"
+            android:textSize="20dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Frontal Lessons" />
 
         <CheckBox
             android:id="@+id/online"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Online Lessons"
+            android:text="On-line Lessons"
             android:checked="true" />
 
 
