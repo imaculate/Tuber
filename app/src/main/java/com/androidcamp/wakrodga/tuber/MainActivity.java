@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Database database = new Database();
 
+
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
             public void onTutorReady(Tutor tutor) {
@@ -36,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        Intent i = new Intent(MainActivity.this,SearchActivity.class);
-        startActivity(i);
+        
     }
 
     @Override
