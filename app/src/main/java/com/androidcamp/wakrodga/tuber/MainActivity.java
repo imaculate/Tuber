@@ -7,6 +7,9 @@ import android.app.LauncherActivity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import java.util.ArrayList;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Database database = new Database();
+        final ArrayList<Tutor> tutors = new ArrayList<>();
+
+        database.addOnTutorReadyListener(new Database.OnTutorListener() {
+            @Override
+            public void onTutorReady(Tutor tutor) {
+                tutors.add(tutor);
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,6 +61,5 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
-
     }
 }
