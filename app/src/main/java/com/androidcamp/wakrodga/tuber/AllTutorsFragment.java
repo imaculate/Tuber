@@ -93,7 +93,7 @@ public class AllTutorsFragment extends Fragment {
             }
         });
         MyAdapter adapter = new MyAdapter();
-        adapter.setTutors();
+       // adapter.setTutors();
         listView = (ListView) v.findViewById(R.id.tutor_list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -147,25 +147,7 @@ public class AllTutorsFragment extends Fragment {
     }
 
     private class MyAdapter extends BaseAdapter {
-        private final ArrayList<Tutor> globalTutors = new ArrayList<Tutor>();
-
-
-
-
-        public void setTutors(){
-           Database database = new Database();
-            database.addOnTutorReadyListener(new Database.OnTutorListener(){
-
-                @Override
-                public void onTutorReady(Tutor tutor) {
-                    globalTutors.add(tutor);
-                }
-
-
-            });
-            notifyDataSetChanged();
-
-        }
+        private  ArrayList<Tutor> globalTutors= Database.tutors;;
 
         public int getCount(){
             return globalTutors.size();
@@ -190,7 +172,7 @@ public class AllTutorsFragment extends Fragment {
                 holder.name =  (TextView) view.findViewById(R.id.name);
                 holder.reputation = (TextView) view.findViewById(R.id.rating);
                 holder.city = (TextView) view.findViewById(R.id.city);
-                holder.city = (TextView) view.findViewById(R.id.country);
+                holder.country = (TextView) view.findViewById(R.id.country);
                 holder.image = (ImageView)view.findViewById(R.id.tutor_image);
                 view.setTag(holder);
             }else{

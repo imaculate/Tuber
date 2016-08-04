@@ -5,7 +5,7 @@
     android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:logo="@mipmap/ic_launcher"
+    app:logo="@mipmap/beach"
     app:title="TUBER"
     app:titleTextColor="@color/colorPrimaryDark"
     xmlns:android="http://schemas.android.com/apk/res/android"

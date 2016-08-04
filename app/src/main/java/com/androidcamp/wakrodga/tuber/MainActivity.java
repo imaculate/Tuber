@@ -1,5 +1,6 @@
 package com.androidcamp.wakrodga.tuber;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.content.Intent;
 
 import android.app.LauncherActivity;
-
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.ui.email.SignInActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener{
 
@@ -39,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static String TITLE_FAV = "FAVORITES";
 
     public static final ArrayList<Tutor> tutors = new ArrayList<>();
+
+    private static final int RC_SIGN_IN = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +69,19 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        //AuthUI.getInstance().signOut(this);
+
         FragmentManager fragMan = getSupportFragmentManager();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(fragMan);
 
-        // Set up the ViewPager with the sections adapter.
+        // Set up the ViewPager  with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
+        Intent i = new Intent(MainActivity.this, SearchActivity.class);
+        startActivity(i);
 
         /*ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
@@ -124,6 +137,23 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
 
         fragTransaction.add(R.id.fragment_container,frag , TAG_ALL ).commit();*/
 
+        startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder()
+                        .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
+                        .build(),
+                RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if ((requestCode == RC_SIGN_IN) && (requestCode == RESULT_OK)) {
+            // Logged in!
+            //startActivity(new Intent(this, WelcomeBackActivity.class));
+            //finish();
+            Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 
@@ -131,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     @Override
     public void onFragmentInteraction() {
 
-        
+
     }
 
     @Override
@@ -150,6 +180,15 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
+                AuthUI.getInstance()
+                        .signOut(this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // user is now signed out
+                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                finish();
+                            }
+                        });
                 break;
             default:
                 break;
