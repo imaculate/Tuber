@@ -1,3 +1,5 @@
+.gradle/
+gradle/wrapper
 .gradle/2.10/taskArtifacts/cache.properties
 .gradle/2.10/taskArtifacts/cache.properties.lock
 .gradle/2.10/taskArtifacts/fileHashes.bin
@@ -25,3 +27,9 @@ app/app.iml
 build/generated/mockable-android-24.jar
 local.properties
 .DS_Store
+.gradle/2.10/tasks/_app_compileDebugAndroidTestJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin
+.gradle/2.10/tasks/_app_compileDebugAndroidTestJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock
+.gradle/2.10/tasks/_app_compileDebugAndroidTestJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin
+.gradle/2.10/tasks/_app_compileDebugAndroidTestJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock
+build/intermediates/dex-cache/cache.xml
+
