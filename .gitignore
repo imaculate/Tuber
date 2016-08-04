@@ -1,0 +1,26 @@
+.gradle/2.10/taskArtifacts/cache.properties
+	.gradle/2.10/taskArtifacts/cache.properties.lock
+	.gradle/2.10/taskArtifacts/fileHashes.bin
+	.gradle/2.10/taskArtifacts/fileSnapshots.bin
+	.gradle/2.10/taskArtifacts/outputFileStates.bin
+	.gradle/2.10/taskArtifacts/taskArtifacts.bin
+	.idea/.name
+	.idea/compiler.xml
+	.idea/copyright/profiles_settings.xml
+	.idea/encodings.xml
+	.idea/gradle.xml
+	.idea/libraries/animated_vector_drawable_24_1_0.xml
+	.idea/libraries/appcompat_v7_24_1_0.xml
+	.idea/libraries/hamcrest_core_1_3.xml
+	.idea/libraries/junit_4_12.xml
+	.idea/libraries/support_annotations_24_1_0.xml
+	.idea/libraries/support_v4_24_1_0.xml
+	.idea/libraries/support_vector_drawable_24_1_0.xml
+	.idea/misc.xml
+	.idea/modules.xml
+	.idea/runConfigurations.xml
+	.idea/workspace.xml
+	Tuber.iml
+	app/app.iml
+	build/generated/mockable-android-24.jar
+	local.properties
