@@ -30,6 +30,13 @@
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-applinks-1.4.0_0f86bb79579b4d76e791059214c68667a75066bb/classes.dex" />
     </item>
     <item
+        jar="/Users/demouser/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_27175a5f902b06df1b2d6b12c0c2aa0d4ded8ccc/classes.dex" />
+    </item>
+    <item
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/9.4.0/jars/classes.jar"
         jumboMode="true"
         revision="24.0.1"
@@ -40,8 +47,15 @@
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.1"
-        sha1="e9c3c86d47aee2cb0230e7cfd2c0971943d7f8d3">
+        sha1="e1bf62f03e7562e485e95b9a6dbc844eccb58db4">
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b9a40f617308b3a437d6f6d53267613a1c67e114/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="4157816e81f0820983957687e9a6f4c1cea0f1e5">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.1.0_d427d8f8d0a8616f9d9953d7aa07a5855896365c/classes.dex" />
     </item>
     <item
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.4.0/jars/classes.jar"
@@ -114,25 +128,11 @@
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-9.4.0_1af499d4f94a17dd0321433c1842eec3245a16ff/classes.dex" />
     </item>
     <item
-        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.0.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
-        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.0.0_146bc589ba017b09e82533f1fe1a1992c07bad87/classes.dex" />
-    </item>
-    <item
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/9.4.0/jars/classes.jar"
         jumboMode="true"
         revision="24.0.1"
         sha1="58c9f5ee817fdb8b658fd7455fadfb74119f7ee9">
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-9.4.0_04972d963f66ad96ffaa99d088ea8417145e0394/classes.dex" />
-    </item>
-    <item
-        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/design/24.0.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="fc29308a7a8f6d4407b34634eb48fb8b817f9b23">
-        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.0.0_b324fb850c60f574ff8a465b7dc66b25cee1b5ff/classes.dex" />
     </item>
     <item
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth-module/9.4.0/jars/classes.jar"
@@ -159,7 +159,7 @@
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="24.0.1"
-        sha1="3df369bc2282f5e02c7e5aaed353e9e8e1d7ee37">
+        sha1="ed55e413d7be33575151db503fd9aa1a0d9b2594">
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_514a6933e0551be69bb860b0c9e964858e80d702/classes.dex" />
     </item>
     <item
@@ -196,6 +196,13 @@
         revision="24.0.1"
         sha1="0e5a66a941515d873a34065fe44fbba6ef422a1b">
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-customtabs-23.2.1_67dbab77a65d069beaaea619bb64a5f54b8bf2ce/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/design/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="8620c018c108eed501bbdb85324b79136373ea44">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.1.0_ce71a17f47a537e800b7c9681068da4038fbf428/classes.dex" />
     </item>
     <item
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/9.4.0/jars/classes.jar"
