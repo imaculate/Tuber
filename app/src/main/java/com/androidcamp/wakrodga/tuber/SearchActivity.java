@@ -113,6 +113,7 @@ public class SearchActivity extends AppCompatActivity {
                     }
                 }
 
+
        // Toast.makeText(SearchActivity.this,"size: "+tutorsAfterSearch.size(),Toast.LENGTH_SHORT).show();
 
     }
