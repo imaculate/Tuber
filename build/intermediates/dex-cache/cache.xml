@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/demouser/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.1.0/8a23146e1a8c7cb4758e3d3f62449213f1e51f67/support-annotations-24.1.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="8a23146e1a8c7cb4758e3d3f62449213f1e51f67">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.1.0_f3a580b6009ec01f695137f0105087c9a7019a27/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="8c854b30eca6c442fe842e66cd3b58c5dd08996f">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.1.0_d5f80026df18d18154df5f70dfde45821dae7be0/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="e096a5d8343cc9c5a9f6eded36bd0f4c82f8c83e">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.1.0_c8db81e39c8a185955054719d2ae29896417c62a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="9340c4f95a4e3916c9ad70296e24576743743712">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.1.0_37d27580f7d13501f1095845a4e5887ee637b9a2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="cca46d92f16e49be72aabcbfad48a87e6d3a0d8b">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_514a6933e0551be69bb860b0c9e964858e80d702/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="a77cd71fd4016165e4363d1cf55b30811bd60940">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b9a40f617308b3a437d6f6d53267613a1c67e114/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.1.0/jars/libs/internal_impl-24.1.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="8c7087216946c546f85a1242a2794c0f271e092c">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.1.0_a105875796cbfb1e82dd61d511d5c6c1a1ccb260/classes.dex" />
+    </item>
+    <item
+        jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.1.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="ba8e8860f7e033c3a503b682337a4bafdf56e6ee">
+        <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.1.0_fb9165dd2d646b80bf0811de4807f598695120b9/classes.dex" />
+    </item>
+
+</items>
