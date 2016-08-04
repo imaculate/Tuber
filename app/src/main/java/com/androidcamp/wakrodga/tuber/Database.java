@@ -7,6 +7,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -43,10 +44,11 @@ public class Database {
     private void addListeners() {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference tutorsRef = rootRef.child("tutors");
-        tutorsRef.addChildEventListener(getTutorListener());
+       // tutorsRef.addChildEventListener(getTutorListener());
+        tutorsRef.addValueEventListener(getTutorsValueEventListener());
 
         DatabaseReference studentsRef = rootRef.child("students");
-        studentsRef.addChildEventListener(getStudentListener());
+        //studentsRef.addChildEventListener(getStudentListener());
 
     }
 
@@ -54,7 +56,7 @@ public class Database {
         return new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
+                Log.d(TAG, "CHILD EVENT LISTENER:" + tutors.size() + "");
                 Tutor tutor = dataSnapshot.getValue(Tutor.class);
                 tutors.add(tutor);
                 onTutorListener.onTutorReady(tutor);
@@ -150,6 +152,22 @@ public class Database {
                 Log.w(TAG, "postComments:onCancelled", databaseError.toException());
                 // Toast.makeText(mContext, "Failed to load comments.",
                 //       Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+
+    private ValueEventListener getTutorsValueEventListener() {
+        return new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Tutor tutor = dataSnapshot.getValue(Tutor.class);
+                tutors.add(tutor);
+                Log.d("VALUE EVENT LISTENER", tutors.size() + "");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         };
     }
