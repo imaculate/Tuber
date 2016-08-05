@@ -96,10 +96,6 @@ public class Profile extends AppCompatActivity {
         checkBox2.setChecked(tutor.getOnline());
 
 
-
-
-
-
     }
 
     static class OvalOutlineProvider extends ViewOutlineProvider {
