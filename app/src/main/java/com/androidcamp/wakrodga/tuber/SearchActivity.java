@@ -123,6 +123,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void applyFilters() {
+        tutorsAfterSearch = new ArrayList<>();
 
         String country = String.valueOf(spinner1.getSelectedItem());
         String city = String.valueOf(spinner2.getSelectedItem());
