@@ -41,7 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_favorite_black_36dp">
+            android:src="@drawable/ic_favorite_border_black_36dp"
+            android:tint="@color/red"
+            android:clickable="true">
         </ImageView>
 
 
