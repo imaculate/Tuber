@@ -167,7 +167,9 @@
                     android:text="On-line Lessons" />
 
                 <RatingBar
-
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:layout_marginTop="20dp"
                     android:id="@+id/radingBar_profile"
                     android:layout_width="wrap_content"

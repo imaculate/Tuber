@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v4.app.ServiceCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,15 +90,15 @@ public class AllTutorsFragment extends Fragment  {
         View v = inflater.inflate(R.layout.fragment_all_tutors, container, false);
 
 
-        Database database = new Database();
-        final ArrayList<Tutor> tutors = new ArrayList<>();
+       // Database database = new Database();
+        final ArrayList<Tutor> tutors = Database.tutors;
 
-        database.addOnTutorReadyListener(new Database.OnTutorListener() {
-            @Override
-            public void onTutorReady(Tutor tutor) {
-                tutors.add(tutor);
-            }
-        });
+//        database.addOnTutorReadyListener(new Database.OnTutorListener() {
+//            @Override
+//            public void onTutorReady(Tutor tutor) {
+//                tutors.add(tutor);
+//            }
+//        });
         MyAdapter adapter = new MyAdapter();
 
         mListener = new OnFragmentInteractionListener()
@@ -109,6 +110,11 @@ public class AllTutorsFragment extends Fragment  {
                 startActivity(i);
             }
         };
+        Intent i = getActivity().getIntent();
+        if (i.getStringExtra(MainPage.FILTER_RESULT) != null) {
+            adapter.setTutors(SearchActivity.tutorsAfterSearch);
+        }
+
         // adapter.setTutors();
         listView = (ListView) v.findViewById(R.id.tutor_list_view);
         listView.setAdapter(adapter);
@@ -147,6 +153,8 @@ public class AllTutorsFragment extends Fragment  {
         }
     }
 
+
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -170,6 +178,10 @@ public class AllTutorsFragment extends Fragment  {
 
     private class MyAdapter extends BaseAdapter {
         private ArrayList<Tutor> globalTutors = Database.tutors;
+
+        public void setTutors(ArrayList<Tutor> tutors) {
+            globalTutors = tutors;
+        }
         ;
 
         public int getCount() {
