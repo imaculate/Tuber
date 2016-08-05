@@ -103,6 +103,7 @@ public class AllTutorsFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        int position = getArguments().getInt("position");
 
         adapter = new MyAdapter();
 
