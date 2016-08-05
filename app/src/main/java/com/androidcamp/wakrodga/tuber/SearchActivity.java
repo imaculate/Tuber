@@ -1,5 +1,6 @@
 package com.androidcamp.wakrodga.tuber;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,8 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by demouser on 8/4/16.
@@ -24,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
     private Button btnSubmit;
     private CheckBox checkBox1;
     private CheckBox checkBox2;
-
+    public static ArrayList<Tutor> tutorsAfterSearch = new ArrayList<>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,18 @@ public class SearchActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        ImageView imageView1 = (ImageView) findViewById(R.id.place_icon);
+        imageView1.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        ImageView imageView2 = (ImageView) findViewById(R.id.place_icon2);
+        imageView2.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        ImageView imageView3 = (ImageView) findViewById(R.id.subjects_icon);
+        imageView3.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        ImageView imageView4 = (ImageView) findViewById(R.id.lang_icon);
+        imageView4.setColorFilter(Color.argb(255, 255, 255, 255));
 
         addListenerOnButton();
 
@@ -58,7 +75,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                applyFilters();
 
                 Toast.makeText(SearchActivity.this,
                         "OnClickListener : " +
@@ -73,6 +90,55 @@ public class SearchActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void applyFilters() {
+
+        String country = String.valueOf(spinner1.getSelectedItem());
+        String city = String.valueOf(spinner2.getSelectedItem());
+        String subject = String.valueOf(spinner3.getSelectedItem());
+        String language = String.valueOf(spinner4.getSelectedItem());
+
+        boolean frontal = checkBox1.isChecked();
+        boolean online = checkBox2.isChecked();
+
+        for(Tutor t: Database.tutors)
+        {
+            if(t.city.equals(city) || city.equals("Choose a city")) {
+
+                if (t.country.equals(country) || country.equals("Choose a country")) {
+
+                    if (contains(t.getSubjects().values(), subject) || subject.equals("Choose a subject")) {
+
+                        if (contains(t.getLanguages().values(),language )|| language.equals("Choose a Language")) {
+
+                            if ((frontal == true && t.frontal) || frontal == false) {
+
+                                    if ((true == online && t.online) || online == false) {
+
+                                            tutorsAfterSearch.add(t);
+                                           // Toast.makeText(SearchActivity.this, "Added: " + t.name, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+
+       // Toast.makeText(SearchActivity.this,"size: "+tutorsAfterSearch.size(),Toast.LENGTH_SHORT).show();
+
+    }
+
+    private boolean contains(Collection<String> values, String subject) {
+        for(String val: values)
+        {
+            if(val.equals(subject))
+                return true;
+        }
+        return false;
     }
 
     @Override

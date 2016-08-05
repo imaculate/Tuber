@@ -2,6 +2,7 @@ package com.androidcamp.wakrodga.tuber;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -80,8 +81,13 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
+        FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(i);
+            }
+        });
         /*ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
             public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
@@ -141,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                         .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
                         .build(),
                 RC_SIGN_IN);
+
+
     }
 
     @Override
@@ -176,6 +184,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Statistics.class);
+                startActivity(intent);
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
