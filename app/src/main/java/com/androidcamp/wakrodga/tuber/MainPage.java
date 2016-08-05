@@ -62,15 +62,6 @@ public class MainPage extends AppCompatActivity implements AllTutorsFragment.OnF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Database database = new Database();
-
-        database.addOnTutorReadyListener(new Database.OnTutorListener() {
-            @Override
-            public void onTutorReady(Tutor tutor) {
-                tutors.add(tutor);
-            }
-        });
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

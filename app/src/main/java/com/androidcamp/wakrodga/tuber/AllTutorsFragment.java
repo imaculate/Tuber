@@ -51,6 +51,12 @@ public class AllTutorsFragment extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ListView listView = null;
+    public static MyAdapter adapter;
+
+
+    public static void setTutors(ArrayList<Tutor> t) {
+        adapter.setTutors(t);
+    }
 
     private OnFragmentInteractionListener mListener;
 
@@ -86,6 +92,9 @@ public class AllTutorsFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Database database = new Database();
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_all_tutors, container, false);
 
@@ -99,7 +108,8 @@ public class AllTutorsFragment extends Fragment  {
 //                tutors.add(tutor);
 //            }
 //        });
-        MyAdapter adapter = new MyAdapter();
+
+
 
         mListener = new OnFragmentInteractionListener()
         {
@@ -110,6 +120,9 @@ public class AllTutorsFragment extends Fragment  {
                 startActivity(i);
             }
         };
+
+        adapter = new MyAdapter();
+
         Intent i = getActivity().getIntent();
         if (i.getStringExtra(MainPage.FILTER_RESULT) != null) {
             adapter.setTutors(SearchActivity.tutorsAfterSearch);
@@ -177,10 +190,11 @@ public class AllTutorsFragment extends Fragment  {
     }
 
     private class MyAdapter extends BaseAdapter {
-        private ArrayList<Tutor> globalTutors = Database.tutors;
+        public ArrayList<Tutor> globalTutors = Database.tutors;
 
         public void setTutors(ArrayList<Tutor> tutors) {
             globalTutors = tutors;
+            notifyDataSetChanged();
         }
         ;
 
