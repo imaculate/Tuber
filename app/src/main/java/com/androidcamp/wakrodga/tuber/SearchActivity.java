@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -50,6 +51,31 @@ public class SearchActivity extends AppCompatActivity {
 
         ImageView imageView4 = (ImageView) findViewById(R.id.lang_icon);
         imageView4.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        spinner1= (Spinner) findViewById(R.id.countries);
+        ArrayAdapter<CharSequence> foodadapter = ArrayAdapter.createFromResource(
+                this, R.array.country_arrays, R.layout.spinner_item);
+        foodadapter.setDropDownViewResource( R.layout.spinner_item);
+        spinner1.setAdapter(foodadapter);
+
+
+        spinner2= (Spinner) findViewById(R.id.cities);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.city_arrays, R.layout.spinner_item);
+        adapter.setDropDownViewResource( R.layout.spinner_item);
+        spinner2.setAdapter(adapter);
+
+        spinner3= (Spinner) findViewById(R.id.subjects);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+                this, R.array.subjects_arrays, R.layout.spinner_item);
+        adapter2.setDropDownViewResource( R.layout.spinner_item);
+        spinner3.setAdapter(adapter2);
+
+        spinner4= (Spinner) findViewById(R.id.languages);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(
+                this, R.array.languages_arrays, R.layout.spinner_item);
+        adapter3.setDropDownViewResource( R.layout.spinner_item);
+        spinner4.setAdapter(adapter3);
 
         addListenerOnButton();
 
