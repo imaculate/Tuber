@@ -147,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                         .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
                         .build(),
                 RC_SIGN_IN);
+
+
     }
 
     @Override
@@ -182,6 +184,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Statistics.class);
+                startActivity(intent);
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();

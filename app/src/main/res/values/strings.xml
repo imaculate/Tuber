@@ -52,6 +52,9 @@
     </string-array>
 
     <string name="languages_prompt">Choose a city</string>
+    <string name="lowers">TUTORS WITH PRICES LOWER THAN YOURS</string>
+    <string name="subject">TUTORS TEACHING THE SAME SUBJECT</string>
+    <string name="average_price_for_your_course">AVERAGE PRICE FOR YOUR COURSES</string>
     <string-array name="languages_arrays">
         <item>Choose a Language</item>
         <item>English</item>
