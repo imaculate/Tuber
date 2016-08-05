@@ -70,6 +70,7 @@ public class StudentFormActivity extends AppCompatActivity {
     }
 
 public void clickedApply(View v){
+    saveData();
     startActivity(new Intent(StudentFormActivity.this, MainPage.class));
 }
 

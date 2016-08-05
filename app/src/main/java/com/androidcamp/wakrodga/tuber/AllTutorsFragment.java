@@ -27,6 +27,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -252,20 +254,27 @@ public class AllTutorsFragment extends Fragment  {
                         if(((ImageView)view).getContentDescription()=="border") {
                             holder.like.setContentDescription("fill");
                             holder.like.setImageResource(R.drawable.ic_favorite_black_36dp);
-                            Tutor t = new Tutor();
                             for (Tutor tutor : Database.tutors) {
                                 if (tutor.getName().equals(holder.name.getText().toString())) {
-                                    t = tutor;
+                                    String studentName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                                    DatabaseReference studentRef = FirebaseDatabase.getInstance().getReference().child("students").child(studentName);
+                                    DatabaseReference likedRef = studentRef.child("liked tutors");
+
+
+                                    Map<String, String> likedTutors = new HashMap<String, String>();
+                                    likedTutors.put("name", tutor.getName());
+
+
+                                    likedRef.setValue(likedTutors);
                                 }
                              }
 
-                            DatabaseReference dbr = FirebaseDatabase.getInstance().getReference().child("students").child("liked tutors");
-                            Map<String, String> likedTutors = new HashMap<String, String>();
-                            likedTutors.put("name", t.getName());
+
 
                         }else{
                             holder.like.setContentDescription("border");
                             holder.like.setImageResource(R.drawable.ic_favorite_border_black_36dp);
+
                         }
                         holder.like.setColorFilter(Color.argb(255, 255, 0, 0));
                     }
