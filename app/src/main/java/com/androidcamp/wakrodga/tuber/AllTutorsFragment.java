@@ -214,6 +214,8 @@ public class AllTutorsFragment extends Fragment  {
             return globalTutors.get(position).hashCode();
         }
 
+
+
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view;
             final ViewHolder holder;
@@ -238,6 +240,8 @@ public class AllTutorsFragment extends Fragment  {
                 holder.ratingBar = (RatingBar) view.findViewById(R.id.radingBar);
                 holder.city = (TextView) view.findViewById(R.id.city);
                 holder.image = (ImageView) view.findViewById(R.id.tutor_image);
+                holder.image.setOutlineProvider(new OvalOutlineProvider());
+                holder.image.setClipToOutline(true);
                 holder.like = (ImageView)view.findViewById(R.id.fav);
                 holder.like.setOnClickListener(new View.OnClickListener() {
                     @Override
