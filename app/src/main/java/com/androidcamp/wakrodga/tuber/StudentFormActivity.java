@@ -15,6 +15,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class StudentFormActivity extends AppCompatActivity {
 
@@ -65,4 +72,17 @@ public class StudentFormActivity extends AppCompatActivity {
 public void clickedApply(View v){
     startActivity(new Intent(StudentFormActivity.this, MainPage.class));
 }
+
+    public void saveData() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        Student student = new Student();
+        student.setName(auth.getCurrentUser().getDisplayName());
+        student.setImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png");
+        Map<String, String> liked = new HashMap<String, String>();
+        student.setLikedTutors(liked);
+        student.setMyTutors(liked);
+        student.setPendingTutors(liked);
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        rootRef.child("students").child(auth.getCurrentUser().getDisplayName()).setValue(student);
+    }
 }
