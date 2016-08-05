@@ -3,6 +3,7 @@ package com.androidcamp.wakrodga.tuber;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Outline;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -213,7 +214,7 @@ public class AllTutorsFragment extends Fragment  {
 
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view;
-            ViewHolder holder;
+            final ViewHolder holder;
             if (null == convertView) {
                 LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
                 view = inflater.inflate(R.layout.card_view_tutor, null);
@@ -235,6 +236,15 @@ public class AllTutorsFragment extends Fragment  {
                 holder.ratingBar = (RatingBar) view.findViewById(R.id.radingBar);
                 holder.city = (TextView) view.findViewById(R.id.city);
                 holder.image = (ImageView) view.findViewById(R.id.tutor_image);
+                holder.image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        holder.image.setImageResource(R.drawable.ic_favorite_black_36dp);
+                        holder.image.setColorFilter(Color.argb(255, 0, 0, 255));
+
+
+                    }
+                });
 
                 holder.subjects = (TextView) view.findViewById(R.id.tutors_subjects_textView);
                 view.setTag(holder);
