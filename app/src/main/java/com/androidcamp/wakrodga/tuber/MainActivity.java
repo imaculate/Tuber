@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
 
         Database database = new Database();
 
-
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
             public void onTutorReady(Tutor tutor) {
@@ -81,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
         FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

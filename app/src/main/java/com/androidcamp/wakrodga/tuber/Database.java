@@ -46,6 +46,7 @@ public class Database {
     }
 
     private void addListeners() {
+//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference tutorsRef = rootRef.child("tutors");
        // tutorsRef.addChildEventListener(getTutorListener());
