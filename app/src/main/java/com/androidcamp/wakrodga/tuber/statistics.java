@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -37,36 +38,64 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         Database database = Database.getDatabaseInstance();
         database.setDataChangedListener(this);
 
-        //doMaths();
+        PieView pieView = (PieView) findViewById(R.id.pieView);
+        pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent2));
+        pieView.setMainBackgroundColor(getResources().getColor(R.color.colorPrimaryDark2));
+
+        PieView pieView2 = (PieView) findViewById(R.id.pieView2);
+        pieView2.setPercentageBackgroundColor(getResources().getColor(R.color.colorPrimary2));
+
+        doMaths();
     }
 
     public void doMaths() {
 
-        ArrayList<String> mySubjects = new ArrayList<>();
-        mySubjects.add("android");
-        Random r = new Random();
-        int index = 0;
-        if(mySubjects.size()>1)
-            index = r.nextInt(mySubjects.size()-1);
-        long result = Math.round(findLowerPrices(mySubjects, (double) 27));
-        double averagePrice = Math.round(averagePrice(mySubjects));
-        long result2 = Math.round(sameSubject(mySubjects.get(index)));
-
-
         PieView pieView = (PieView) findViewById(R.id.pieView);
         pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent2));
         pieView.setMainBackgroundColor(getResources().getColor(R.color.colorPrimaryDark2));
-        pieView.setmPercentage(result);
 
         TextView textView = (TextView) findViewById(R.id.price);
-        textView.setText(String.valueOf(averagePrice)+"$");
 
         PieView pieView2 = (PieView) findViewById(R.id.pieView2);
         pieView2.setPercentageBackgroundColor(getResources().getColor(R.color.colorPrimary2));
-        pieView2.setmPercentage(result2);
 
         TextView textView2 = (TextView) findViewById(R.id.mysubject);
-        textView2.setText("TUTORS ALSO TEACHING " +mySubjects.get(index).toUpperCase());
+
+        Tutor me = new Tutor();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        boolean isMe = false;
+        for (Tutor t : Database.tutors) {
+            if(t.getName().equals(auth.getCurrentUser().getDisplayName())){
+                me=t;
+                isMe=true;
+                break;
+            }
+        }
+
+        if(!isMe) {
+            pieView.setmPercentage(0);
+            textView.setText(String.valueOf(0)+"$");
+            pieView2.setmPercentage(0);
+            textView2.setText("YOU DON'T TEACH ANY SUBJECT");
+
+        }else {
+            ArrayList<String> mySubjects = new ArrayList<>();
+            for(String s : me.getSubjects().values()) {
+                mySubjects.add(s);
+            }
+            Random r = new Random();
+            int index = 0;
+            if(mySubjects.size()>1)
+                index = r.nextInt(mySubjects.size()-1);
+            long result = Math.round(findLowerPrices(mySubjects, (double) me.getPrice()));
+            double averagePrice = Math.round(averagePrice(mySubjects));
+            long result2 = Math.round(sameSubject(mySubjects.get(index)));
+
+            pieView.setmPercentage(result);
+            textView.setText(String.valueOf(averagePrice)+"$");
+            pieView2.setmPercentage(result2);
+            textView2.setText("TUTORS ALSO TEACHING " +mySubjects.get(index).toUpperCase());
+        }
     }
 
     public double findLowerPrices(ArrayList<String> mySubjects, Double myPrice) {

@@ -72,16 +72,16 @@ public class AllTutorsFragment extends Fragment  {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param position Parameter 1.
+     *
      * @return A new instance of fragment AllTutorsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AllTutorsFragment newInstance(String param1, String param2) {
+    public static AllTutorsFragment newInstance(int position) {
         AllTutorsFragment fragment = new AllTutorsFragment();
-       /* Bundle args = new Bundle();
-
-        fragment.setArguments(args);*/
+       Bundle args = new Bundle();
+        args.putInt("position", position);
+        fragment.setArguments(args);
         return fragment;
     }
 
