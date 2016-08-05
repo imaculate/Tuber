@@ -10,6 +10,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by demouser on 8/4/16.
@@ -18,6 +20,8 @@ public class Database {
 
     private static final String TAG = "bla";
     public static ArrayList<Tutor> tutors = new ArrayList<>();
+
+    public static Set<String> names = new HashSet<>();
     private OnTutorListener onTutorListener;
     private OnStudentListener onStudentListener;
 
@@ -59,7 +63,10 @@ public class Database {
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 Log.d(TAG, "CHILD EVENT LISTENER:" + tutors.size() + "");
                 Tutor tutor = dataSnapshot.getValue(Tutor.class);
-                tutors.add(tutor);
+                if(!names.contains(tutor.name)) {
+                    tutors.add(tutor);
+                    names.add(tutor.name);
+                }
                 onTutorListener.onTutorReady(tutor);
             }
 
@@ -163,7 +170,10 @@ public class Database {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot data: dataSnapshot.getChildren()) {
                     Tutor tutor = data.getValue(Tutor.class);
-                    tutors.add(tutor);
+                    if(!names.contains(tutor.name)) {
+                        tutors.add(tutor);
+                        names.add(tutor.name);
+                    }
                     Log.d("VALUE EVENT LISTENER", tutor.country + "");
 
                 }

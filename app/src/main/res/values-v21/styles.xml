@@ -1,1 +1,20 @@
-<resources></resources>
+<resources>
+
+
+    <style name="CustomCheckBox">
+        <item name="android:theme">@style/CheckBoxAppTheme</item>
+    </style>
+
+    <style name="CheckBoxAppTheme">
+        <item name="android:colorAccent">
+            @color/colorPrimary
+        </item>
+        <item name="android:colorControlNormal">
+            @color/colorPrimary
+        </item>
+        <item name="android:colorControlHighlight">
+            @color/pink
+        </item>
+    </style>
+
+</resources>
