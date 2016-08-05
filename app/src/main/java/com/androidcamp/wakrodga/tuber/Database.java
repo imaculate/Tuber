@@ -22,7 +22,15 @@ public class Database {
     public static ArrayList<Tutor> tutors = new ArrayList<>();
 
     public static Set<String> names = new HashSet<>();
+    private  onDataChanged listener;
 
+    public interface onDataChanged {
+        public void onDataChange();
+    }
+
+    public void setDataChangedListener(onDataChanged listener) {
+        this.listener = listener;
+    }
 
     public Database() {
         addListeners();
@@ -50,6 +58,8 @@ public class Database {
                     }
                     Log.d("VALUE EVENT LISTENER", tutor.country + "");
                     AllTutorsFragment.setTutors(tutors);
+                    if(listener!=null)
+                        listener.onDataChange();
                 }
 
             }
