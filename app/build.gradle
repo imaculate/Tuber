@@ -10,7 +10,7 @@ android {
     buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId "com.androidcamp.wakrodga.tuber"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -31,12 +31,21 @@ dependencies {
     compile 'com.google.firebase:firebase-database:9.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:appcompat-v7:24.1.0'
+<<<<<<< HEAD
+=======
+
+    //compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+>>>>>>> 36b1af0b3baed3a69f55a5ecf605bcfe1316080c
     compile 'com.android.support:support-v4:24.1.0'
     compile 'com.firebaseui:firebase-ui-auth:0.4.4'
     compile 'com.google.firebase:firebase-database:9.4.0'
     compile 'com.google.firebase:firebase-auth:9.4.0'
     compile 'com.google.firebase:firebase-core:9.4.0'
     compile 'com.android.support:design:24.1.0'
+    compile 'com.android.support:cardview-v7:24.0.+'
+    compile 'com.android.support:recyclerview-v7:24.0.+'
+    compile 'com.github.zurche:plain-pie:v0.1.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
 }
 
 

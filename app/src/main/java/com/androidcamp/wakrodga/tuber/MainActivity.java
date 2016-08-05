@@ -2,6 +2,7 @@ package com.androidcamp.wakrodga.tuber;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
 
         Database database = new Database();
 
-
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
             public void onTutorReady(Tutor tutor) {
@@ -82,7 +82,13 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         tabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
+        FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);
+        myFab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(i);
+            }
+        });
         /*ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
             public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
@@ -143,7 +149,12 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                         .setTheme(R.style.SuperAppTheme)
                         .build(),
                 RC_SIGN_IN);
+<<<<<<< HEAD
        // startActivity(new Intent(this, FormActivity.class));
+=======
+
+
+>>>>>>> 36b1af0b3baed3a69f55a5ecf605bcfe1316080c
     }
 
     @Override
@@ -182,6 +193,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Statistics.class);
+                startActivity(intent);
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
