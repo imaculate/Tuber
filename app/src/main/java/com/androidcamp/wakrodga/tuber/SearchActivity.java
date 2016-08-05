@@ -107,16 +107,6 @@ public class SearchActivity extends AppCompatActivity {
 
                 applyFilters();
 
-                Toast.makeText(SearchActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem())+
-                                "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem())+
-                                "\nSpinner 3 : "+ String.valueOf(spinner3.getSelectedItem())+
-                                "\nSpinner 4 : "+ String.valueOf(spinner4.getSelectedItem())+
-                                "\ncheckbox 1 : "+ checkBox1.isChecked()+
-                                "\ncheckbox 2 : "+ checkBox2.isChecked()
-                        ,
-                        Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -184,10 +174,10 @@ public class SearchActivity extends AppCompatActivity {
         String msg = "";
         switch (menuItem.getItemId()) {
             case R.id.edit:
-                Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.log_out:
-                Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
