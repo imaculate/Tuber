@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v4.app.ServiceCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -40,6 +43,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -247,6 +252,16 @@ public class AllTutorsFragment extends Fragment  {
                         if(((ImageView)view).getContentDescription()=="border") {
                             holder.like.setContentDescription("fill");
                             holder.like.setImageResource(R.drawable.ic_favorite_black_36dp);
+                            Tutor t = new Tutor();
+                            for (Tutor tutor : Database.tutors) {
+                                if (tutor.getName().equals(holder.name.getText().toString())) {
+                                    t = tutor;
+                                }
+                             }
+
+                            DatabaseReference dbr = FirebaseDatabase.getInstance().getReference().child("students").child("liked tutors");
+                            Map<String, String> likedTutors = new HashMap<String, String>();
+                            likedTutors.put("name", t.getName());
 
                         }else{
                             holder.like.setContentDescription("border");
