@@ -13,6 +13,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by demouser on 8/4/16.
  */
@@ -103,7 +110,37 @@ public class TutorFormActivity extends AppCompatActivity {
 //        });
     }
     public void clickedApply(View v){
+        saveData();
         startActivity(new Intent(TutorFormActivity.this,Statistics.class));
+    }
+
+    public void saveData() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        Tutor t = new Tutor();
+        t.setCity(spinner2.getSelectedItem().toString());
+        t.setCountry(spinner1.getSelectedItem().toString());
+        t.setPrice((long) 0);
+        Map<String, String> lan = new HashMap<String, String>();
+        lan.put("name", spinner4.getSelectedItem().toString());
+        t.setLanguages(lan);
+        Map<String, String> sub = new HashMap<String, String>();
+        sub.put("name", spinner3.getSelectedItem().toString());
+        t.setSubjects(sub);
+        t.setName(auth.getCurrentUser().getDisplayName());
+        t.setReputation((double) 0);
+        if(checkBox1.isChecked()) {
+            t.setFrontal(true);
+        } else {
+            t.setFrontal(false);
+        }
+        if(checkBox2.isChecked()) {
+            t.setOnline(true);
+        } else {
+            t.setOnline(false);
+        }
+        t.setImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png");
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        rootRef.child("tutors").child(auth.getCurrentUser().getDisplayName()).setValue(t);
     }
 
 }

@@ -69,8 +69,8 @@ public class Tutor {
         return name;
     }
 
-    public String getReputation() {
-        return reputation + "/5";
+    public Double getReputation() {
+        return reputation;
     }
 
     public void setCity(String city) {

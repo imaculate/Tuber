@@ -21,7 +21,9 @@ import java.util.Random;
 
 import az.plainpie.PieView;
 
-public class Statistics extends AppCompatActivity {
+
+public class Statistics extends AppCompatActivity implements Database.onDataChanged {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,12 @@ public class Statistics extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Database database = new Database();
+        database.setDataChangedListener(this);
+
+        //doMaths();
+    }
+
+    public void doMaths() {
 
         ArrayList<String> mySubjects = new ArrayList<>();
         mySubjects.add("android");
@@ -141,5 +149,10 @@ public class Statistics extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onDataChange() {
+        doMaths();
     }
 }

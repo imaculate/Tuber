@@ -58,7 +58,8 @@ public class AllTutorsFragment extends Fragment  {
 
 
     public static void setTutors(ArrayList<Tutor> t) {
-        adapter.setTutors(t);
+        if(adapter != null)
+            adapter.setTutors(t);
     }
 
     private OnFragmentInteractionListener mListener;
@@ -96,6 +97,8 @@ public class AllTutorsFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        adapter = new MyAdapter();
+
         Database database = new Database();
 
         // Inflate the layout for this fragment
@@ -123,8 +126,6 @@ public class AllTutorsFragment extends Fragment  {
                 startActivity(i);
             }
         };
-
-        adapter = new MyAdapter();
 
         Intent i = getActivity().getIntent();
         if (i.getStringExtra(MainPage.FILTER_RESULT) != null) {

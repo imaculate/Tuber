@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_main);
 
+        Database database = new Database();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
             // already signed in
             Log.d("BUGBUG","user is already signed in, lets move to fromActivity");
             startActivity(new Intent(this, FormActivity.class));
+
             finish();
         } else {
             // not signed in
@@ -100,16 +102,11 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN)
             if (requestCode == RESULT_OK) {
-
                 // Logged in!
                 startActivity(new Intent(this, FormActivity.class));
-
-
                 finish();
             }
     }
-
-
 
     @Override
     public void onFragmentInteraction() {
