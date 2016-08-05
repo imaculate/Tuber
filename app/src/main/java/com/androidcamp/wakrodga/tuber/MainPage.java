@@ -187,7 +187,11 @@ public class MainPage extends AppCompatActivity implements AllTutorsFragment.OnF
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return  new AllTutorsFragment();
+            Fragment frag =   new AllTutorsFragment();
+            Bundle b= new Bundle();
+            b.putBoolean("fav", position==2);
+            frag.setArguments(b);
+            return frag;
         }
 
         @Override
