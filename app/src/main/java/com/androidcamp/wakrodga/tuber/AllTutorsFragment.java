@@ -99,7 +99,7 @@ public class AllTutorsFragment extends Fragment {
 //        });
         MyAdapter adapter = new MyAdapter();
         Intent i = getActivity().getIntent();
-        if (i.getStringExtra(MainActivity.FILTER_RESULT) != null) {
+        if (i.getStringExtra(MainPage.FILTER_RESULT) != null) {
             adapter.setTutors(SearchActivity.tutorsAfterSearch);
         }
 

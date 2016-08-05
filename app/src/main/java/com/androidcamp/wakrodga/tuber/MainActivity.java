@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static String TAG_ALL = "all_tutors";
     public static String TAG_MY = "my_tutors";
     public static String TAG_FAV = "fav_tutors";
-    public static final String FILTER_RESULT = "filterResult";
+
     public static String TITLE_ALL = "ALL TUTORS";
     public static String TITLE_MY = "MY TUTORS";
     public static String TITLE_FAV = "FAVORITES";

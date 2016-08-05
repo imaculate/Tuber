@@ -101,8 +101,8 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SearchActivity.this, MainActivity.class);
-                i.putExtra(MainActivity.FILTER_RESULT, "true");
+                Intent i = new Intent(SearchActivity.this, MainPage.class);
+                i.putExtra(MainPage.FILTER_RESULT, "true");
                 startActivity(i);
 
                 applyFilters();

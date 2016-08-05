@@ -41,6 +41,7 @@ public class MainPage extends AppCompatActivity implements AllTutorsFragment.OnF
     public static String TAG_MY = "my_tutors";
     public static String TAG_FAV = "fav_tutors";
 
+    public static final String FILTER_RESULT = "filterResult";
 
     @Override
     public void onFragmentInteraction() {
