@@ -20,9 +20,24 @@ public class Database {
 
     private static final String TAG = "bla";
     public static ArrayList<Tutor> tutors = new ArrayList<>();
+    private static Database database;
 
     public static Set<String> names = new HashSet<>();
     private  onDataChanged listener;
+
+    private Database() {
+
+    }
+
+    public static Database getDatabaseInstance() {
+        if (database == null) {
+            database = new Database();
+            database.addListeners();
+        }
+        return  database;
+    }
+
+
 
     public interface onDataChanged {
         public void onDataChange();
@@ -32,17 +47,15 @@ public class Database {
         this.listener = listener;
     }
 
-    public Database() {
-        addListeners();
-    }
 
     private void addListeners() {
-//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+       // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference tutorsRef = rootRef.child("tutors");
         tutorsRef.addValueEventListener(getTutorsValueEventListener());
 
         DatabaseReference studentsRef = rootRef.child("students");
+
     }
 
 

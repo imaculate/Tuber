@@ -38,10 +38,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private boolean successfullLogin=false;
+    private boolean dataDownloaded = false;
     private ViewPager mViewPager;
     public static String TAG_ALL = "all_tutors";
     public static String TAG_MY = "my_tutors";
@@ -65,10 +68,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_main);
 
-        Database database = new Database();
-
         mAuth = FirebaseAuth.getInstance();
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         if (auth.getCurrentUser() != null) {
             // already signed in
             Log.d("BUGBUG","user is already signed in, lets move to fromActivity");
-            startActivity(new Intent(this, FormActivity.class));
+            //startActivity(new Intent(this, FormActivity.class));
+            startActivity(new Intent(MainActivity.this, Statistics.class));
 
             finish();
         } else {
@@ -102,11 +103,10 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN)
             if (requestCode == RESULT_OK) {
-                // Logged in!
-                startActivity(new Intent(this, FormActivity.class));
-                finish();
+                startActivity(new Intent(MainActivity.this, FormActivity.class));
             }
     }
+
 
     @Override
     public void onFragmentInteraction() {
@@ -138,8 +138,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, Statistics.class);
-                startActivity(intent);
+               // Intent intent = new Intent(MainActivity.this, Statistics.class);
+               // startActivity(intent);
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             public void onComplete(@NonNull Task<Void> task) {
                                 // user is now signed out
-                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                //startActivity(new Intent(MainActivity.this, MainActivity.class));
                                 finish();
                                 FirebaseAuth.getInstance().signOut();
                             }

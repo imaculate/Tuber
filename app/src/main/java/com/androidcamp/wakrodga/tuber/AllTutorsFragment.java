@@ -99,7 +99,7 @@ public class AllTutorsFragment extends Fragment  {
 
         adapter = new MyAdapter();
 
-        Database database = new Database();
+        Database database = Database.getDatabaseInstance();
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_all_tutors, container, false);

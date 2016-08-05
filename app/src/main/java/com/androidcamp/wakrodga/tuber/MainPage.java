@@ -157,7 +157,7 @@ public class MainPage extends AppCompatActivity implements AllTutorsFragment.OnF
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
-
+                startActivity(new Intent(MainPage.this, StudentFormActivity.class));
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();

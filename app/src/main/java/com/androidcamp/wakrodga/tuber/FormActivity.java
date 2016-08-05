@@ -21,10 +21,10 @@ public class FormActivity extends AppCompatActivity {
 
             }
     public void onTuterClick(View v){
-        startActivity(new Intent(FormActivity.this,TutorFormActivity.class));
+        startActivity(new Intent(FormActivity.this,Statistics.class));
     }
     public void onStudClick(View v){
-        startActivity(new Intent(FormActivity.this,StudentFormActivity.class));
+        startActivity(new Intent(FormActivity.this,MainPage.class));
     }
 
     @Override

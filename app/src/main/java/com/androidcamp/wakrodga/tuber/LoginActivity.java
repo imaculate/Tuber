@@ -32,6 +32,7 @@ public class LoginActivity extends FragmentActivity {
         System.out.println("sdk initialized");
         callbackManager = CallbackManager.Factory.create();
 
+
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override

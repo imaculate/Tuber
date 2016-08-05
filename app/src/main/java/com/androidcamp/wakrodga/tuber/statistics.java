@@ -34,7 +34,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        Database database = new Database();
+        Database database = Database.getDatabaseInstance();
         database.setDataChangedListener(this);
 
         //doMaths();
@@ -132,6 +132,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Statistics.this, TutorFormActivity.class));
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
