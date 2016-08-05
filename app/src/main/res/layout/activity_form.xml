@@ -11,40 +11,43 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/background"
             android:orientation="vertical"
             android:weightSum="20"
             >
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
-                android:text="@string/i_m_a_tuter"
+                android:text="I'm a tutor"
                 android:textSize="40dp"
-                android:background="@color/colorPrimaryDark"
+
                 android:id="@+id/radioButton2"
                 android:textAlignment="center"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:onClick="onTuterClick"
+                android:layout_marginTop="200dp"
                 android:layout_marginBottom="40dp"
                 android:layout_above="@+id/radioButton"
-                android:layout_alignParentStart="true"
-                android:layout_margin="20dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+
+
                 />
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:text="@string/i_m_a_student"
                 android:textSize="40dp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/radioButton"
                 android:textAlignment="center"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:onClick="onStudClick"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:layout_margin="20dp"
+
+
+
                 />
 
 
