@@ -40,9 +40,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static String TAG_ALL = "all_tutors";
     public static String TAG_MY = "my_tutors";
     public static String TAG_FAV = "fav_tutors";
-
-
-
+    public static final String FILTER_RESULT = "filterResult";
     public static String TITLE_ALL = "ALL TUTORS";
     public static String TITLE_MY = "MY TUTORS";
     public static String TITLE_FAV = "FAVORITES";
@@ -55,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         Database database = new Database();
 
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         mViewPager = (ViewPager) findViewById(R.id.container);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);

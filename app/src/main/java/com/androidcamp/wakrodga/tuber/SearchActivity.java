@@ -1,5 +1,6 @@
 package com.androidcamp.wakrodga.tuber;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -100,6 +101,9 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(SearchActivity.this, MainActivity.class);
+                i.putExtra(MainActivity.FILTER_RESULT, "true");
+                startActivity(i);
 
                 applyFilters();
 
