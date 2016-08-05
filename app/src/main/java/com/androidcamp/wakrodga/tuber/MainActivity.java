@@ -2,6 +2,7 @@ package com.androidcamp.wakrodga.tuber;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -53,18 +54,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+         setContentView(R.layout.activity_main);
 
-
-
-        Database database = new Database();
-
-        database.addOnTutorReadyListener(new Database.OnTutorListener() {
-            @Override
-            public void onTutorReady(Tutor tutor) {
-                tutors.add(tutor);
-            }
-        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
