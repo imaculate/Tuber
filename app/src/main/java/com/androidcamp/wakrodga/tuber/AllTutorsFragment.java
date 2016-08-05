@@ -128,6 +128,8 @@ public class AllTutorsFragment extends Fragment {
         }
     }
 
+
+
     @Override
     public void onDetach() {
         super.onDetach();

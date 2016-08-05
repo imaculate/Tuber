@@ -33,7 +33,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener{
+public class MainPage extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener{
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static String TAG_FAV = "fav_tutors";
 
 
+    @Override
+    public void onFragmentInteraction() {
+
+    }
 
     public static String TITLE_ALL = "ALL TUTORS";
     public static String TITLE_MY = "MY TUTORS";
@@ -85,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,SearchActivity.class);
+                Intent i = new Intent(MainPage.this,SearchActivity.class);
                 startActivity(i);
             }
         });
@@ -143,37 +147,9 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
 
         fragTransaction.add(R.id.fragment_container,frag , TAG_ALL ).commit();*/
 
-        startActivityForResult(
-                AuthUI.getInstance().createSignInIntentBuilder()
-                        .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
-                        .setTheme(R.style.SuperAppTheme)
-                        .build(),
-                RC_SIGN_IN);
-       // startActivity(new Intent(this, FormActivity.class));
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN)
-            if (requestCode == RESULT_OK) {
-                // Logged in!
-                startActivity(new Intent(this, FormActivity.class));
-                //AuthUI.getInstance()
-                  //      .signOut(this);
-                finish();
-                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
-            }
     }
 
 
-
-
-    @Override
-    public void onFragmentInteraction() {
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,8 +164,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, Statistics.class);
-                startActivity(intent);
+
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
@@ -198,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             public void onComplete(@NonNull Task<Void> task) {
                                 // user is now signed out
-                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                startActivity(new Intent(MainPage.this, MainActivity.class));
                                 finish();
                             }
                         });

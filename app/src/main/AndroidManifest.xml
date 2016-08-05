@@ -18,7 +18,10 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,21 +31,14 @@
         <activity
             android:name=".LoginActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-<<<<<<< HEAD
             android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".StudentFormActivity" />
+        <activity android:name=".TutorFormActivity" />
         <activity android:name=".Statistics" />
         <activity android:name=".FormActivity"></activity>
-=======
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:label="@string/app_name">
-        </activity>
-        <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".Statistics">
-        </activity>
-
->>>>>>> 36b1af0b3baed3a69f55a5ecf605bcfe1316080c
+        <activity android:name=".MainPage"></activity>
     </application>
 
 </manifest>

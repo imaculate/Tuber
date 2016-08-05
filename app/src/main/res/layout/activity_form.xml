@@ -1,64 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        <LinearLayout
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimaryDark"
             android:orientation="vertical"
-            android:weightSum="1">
-            <RelativeLayout
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="70dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_gravity="center_horizontal">
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/radioGroup"
-                    android:background="@color/colorPrimaryDark">
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/i_m_a_student"
-                        android:textSize="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/colorPrimaryDark"
-                        android:id="@+id/radioButton"
-                        android:textColor="#ffffff"
-                        android:checked="false" />
-                     <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/i_m_a_tuter"
-                        android:textSize="20dp"
-                         android:background="@color/colorPrimaryDark"
-                         android:layout_weight="1"
-                        android:id="@+id/radioButton2"
-                        />
-                </RadioGroup>
-            </RelativeLayout>
+            android:weightSum="20"
+            >
 
-            <fragment
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.androidcamp.wakrodga.tuber.StudentFormFragment"
-                android:id="@+id/aFormFragment"
+                android:text="@string/i_m_a_tuter"
+                android:textSize="40dp"
                 android:background="@color/colorPrimaryDark"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.96" />
+                android:id="@+id/radioButton2"
+                android:textAlignment="center"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="onTuterClick"
+                android:layout_marginBottom="40dp"
+                android:layout_above="@+id/radioButton"
+                android:layout_alignParentStart="true"
+                android:layout_margin="20dp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/i_m_a_student"
+                android:textSize="40dp"
+                android:background="@color/colorPrimaryDark"
+                android:id="@+id/radioButton"
+                android:textAlignment="center"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="onStudClick"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="20dp"
+                />
+
 
         </LinearLayout>
 
-    </ScrollView>
-    <include layout="@layout/toolbar"/>
 
-</FrameLayout>
+</LinearLayout>
