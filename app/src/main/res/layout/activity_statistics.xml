@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
 
 <include layout="@layout/toolbar"/>
 
@@ -43,7 +44,8 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                android:padding="16px"/>
+                android:padding="16px"
+                android:textStyle="bold"/>
 
             <az.plainpie.PieView
                 android:id="@+id/pieView"
@@ -74,7 +76,8 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textSize="20sp"
-                android:padding="16px" />
+                android:padding="16px"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/price"
@@ -84,7 +87,8 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textSize="40sp"
-                android:padding="16px"/>
+                android:padding="16px"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -115,7 +119,8 @@
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:padding="16px"
-                android:id="@+id/mysubject"/>
+                android:id="@+id/mysubject"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

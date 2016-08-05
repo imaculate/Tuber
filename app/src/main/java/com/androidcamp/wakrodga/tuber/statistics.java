@@ -53,6 +53,7 @@ public class Statistics extends AppCompatActivity {
         textView.setText(String.valueOf(averagePrice)+"$");
 
         PieView pieView2 = (PieView) findViewById(R.id.pieView2);
+        pieView2.setPercentageBackgroundColor(getResources().getColor(R.color.colorPrimary2));
         pieView2.setmPercentage(result2);
 
         TextView textView2 = (TextView) findViewById(R.id.mysubject);
