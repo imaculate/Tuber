@@ -134,8 +134,9 @@ public class TutorFormActivity extends AppCompatActivity {
         if(checkBox2.isChecked()) {
             t.setOnline(true);
         }
+        t.setImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png");
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        rootRef.child("tutors").child(auth.getCurrentUser().getProviderId()).setValue(t);
+        rootRef.child("tutors").child(auth.getCurrentUser().getDisplayName()).setValue(t);
     }
 
 }
