@@ -279,7 +279,14 @@ public class AllTutorsFragment extends Fragment  {
             holder.name.setText(current.getName());
             if(current.reputation != null)
                 holder.ratingBar.setRating(current.reputation.floatValue());
-            holder.city.setText(current.getCity() + ", " + current.getCountry());
+
+            String city = current.getCity();
+            city = city.replace("Choose a city","");
+            String country = current.getCountry();
+            country = country.replace("Choose a country","");
+
+
+            holder.city.setText(city + ", " + country);
             String subjects = "Teaches: ";
 
             if(current.getSubjects() != null) {
@@ -290,6 +297,7 @@ public class AllTutorsFragment extends Fragment  {
                         break;
                     }
                 }
+                subjects = subjects.substring(0,subjects.length()-2);
             }
             holder.subjects.setText(subjects);
             Picasso.with(getActivity().getApplicationContext()).load(current.getImage()).error(R.drawable.com_facebook_profile_picture_blank_portrait).into(holder.image);
