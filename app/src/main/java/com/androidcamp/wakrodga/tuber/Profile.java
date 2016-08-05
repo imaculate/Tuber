@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -97,8 +98,7 @@ public class Profile extends AppCompatActivity {
         checkBox1.setChecked(tutor.getFrontal());
         checkBox2.setChecked(tutor.getOnline());
 
-
-        FloatingActionButton  bookButton = (FloatingActionButton)findViewById(R.id.book_fab);
+        Button bookButton = (Button)findViewById(R.id.book_fab);
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
