@@ -109,7 +109,6 @@
 
             <Spinner
                 android:id="@+id/languages"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
