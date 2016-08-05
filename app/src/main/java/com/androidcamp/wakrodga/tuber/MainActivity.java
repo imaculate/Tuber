@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
 
         Database database = new Database();
 
-
         database.addOnTutorReadyListener(new Database.OnTutorListener() {
             @Override
             public void onTutorReady(Tutor tutor) {
@@ -81,60 +80,6 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         tabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
-        /*ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-                if(tab.getText().equals(TITLE_ALL)){
-                    FragmentManager fragMan = getSupportFragmentManager();
-                    FragmentTransaction fragTransaction = fragMan.beginTransaction();
-                    AllTutorsFragment frag = new AllTutorsFragment();
-
-                    fragTransaction.replace(R.id.fragment_container,frag , TAG_ALL ).commit();
-
-
-                }else if(tab.getText().equals(TITLE_MY)){
-
-                }else{
-
-                }
-
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-            }
-        };
-
-        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        ActionBar.Tab tab_one = getSupportActionBar().newTab();
-
-        tab_one.setTabListener(tabListener);
-        tab_one.setText(TITLE_ALL);
-        getSupportActionBar().addTab(tab_one);
-
-        ActionBar.Tab tab_two = getSupportActionBar().newTab();
-        tab_two.setTabListener(tabListener);
-        tab_two.setText(TITLE_MY);
-        getSupportActionBar().addTab(tab_two);
-
-        ActionBar.Tab tab_three = getSupportActionBar().newTab();
-        tab_three.setTabListener(tabListener);
-        tab_three.setText(TITLE_FAV);
-        getSupportActionBar().addTab(tab_three);
-
-
-        FragmentTransaction fragTransaction = fragMan.beginTransaction();
-        AllTutorsFragment frag = new AllTutorsFragment();
-
-        fragTransaction.add(R.id.fragment_container,frag , TAG_ALL ).commit();*/
 
         startActivityForResult(
                 AuthUI.getInstance().createSignInIntentBuilder()
