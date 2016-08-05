@@ -264,14 +264,18 @@ public class AllTutorsFragment extends Fragment  {
 
             Tutor current = globalTutors.get(position);
             holder.name.setText(current.getName());
-            holder.ratingBar.setRating(current.reputation.floatValue());
+            if(current.reputation != null)
+                holder.ratingBar.setRating(current.reputation.floatValue());
             holder.city.setText(current.getCity() + ", " + current.getCountry());
             String subjects = "Teaches: ";
-            for (String string : current.getSubjects().values()) {
-                subjects += string + ", ";
-                if (subjects.length() > 50) {
-                    subjects += "...";
-                    break;
+
+            if(current.getSubjects() != null) {
+                for (String string : current.getSubjects().values()) {
+                    subjects += string + ", ";
+                    if (subjects.length() > 50) {
+                        subjects += "...";
+                        break;
+                    }
                 }
             }
             holder.subjects.setText(subjects);
