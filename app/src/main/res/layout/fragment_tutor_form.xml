@@ -121,6 +121,33 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set your Price: "
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+                    android:inputType="numberDecimal"/>
+
+                <EditText
+                    android:id="@+id/price_id"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:inputType="number"/>
+            </LinearLayout>
+
             <CheckBox
                 android:layout_marginTop="20dp"
                 android:id="@+id/frontal"

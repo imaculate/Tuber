@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class TutorFormActivity extends AppCompatActivity {
     private Button btnSubmit;
     private CheckBox checkBox1;
     private CheckBox checkBox2;
+    private EditText price;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,8 @@ public class TutorFormActivity extends AppCompatActivity {
         adapter3.setDropDownViewResource( R.layout.spinner_item);
         spinner4.setAdapter(adapter3);
 
+        price = (EditText) findViewById(R.id.price_id);
+
 
 //        btnSubmit = (Button) findViewById(R.id.btnSubmit);
 //
@@ -119,7 +123,8 @@ public class TutorFormActivity extends AppCompatActivity {
         Tutor t = new Tutor();
         t.setCity(spinner2.getSelectedItem().toString());
         t.setCountry(spinner1.getSelectedItem().toString());
-        t.setPrice((long) 0);
+
+        t.setPrice((new Long(String.valueOf(price.getText()))));
         Map<String, String> lan = new HashMap<String, String>();
         lan.put("name", spinner4.getSelectedItem().toString());
         t.setLanguages(lan);
