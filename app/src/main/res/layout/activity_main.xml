@@ -40,10 +40,12 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="@dimen/custom_fab_size"
+        android:layout_height="@dimen/custom_fab_size"
         android:layout_margin="16dp"
         android:clickable="true"
+        app:fabSize="normal"
         android:src="@drawable/ic_search_black_36dp"
         app:layout_anchor="@id/container"
         app:layout_anchorGravity="center_vertical|right"/>
