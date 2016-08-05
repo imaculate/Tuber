@@ -32,6 +32,15 @@ public class Statistics extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        Database database = new Database();
+
+        database.addOnTutorReadyListener(new Database.OnTutorListener() {
+            @Override
+            public void onTutorReady(Tutor tutor) {
+                Database.tutors.add(tutor);
+            }
+        });
+
         ArrayList<String> mySubjects = new ArrayList<>();
         mySubjects.add("android");
         Random r = new Random();
