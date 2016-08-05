@@ -47,7 +47,7 @@
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.1"
-        sha1="e1bf62f03e7562e485e95b9a6dbc844eccb58db4">
+        sha1="e68b13a4a75fb3614a1a7b0ae817f1cdd5927a2e">
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b9a40f617308b3a437d6f6d53267613a1c67e114/classes.dex" />
     </item>
     <item
@@ -159,7 +159,7 @@
         jar="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="24.0.1"
-        sha1="ed55e413d7be33575151db503fd9aa1a0d9b2594">
+        sha1="9daf121ce242d876e8c66816cf46898980a8c6d6">
         <dex dex="/Users/demouser/AndroidStudioProjects/Tuber/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_514a6933e0551be69bb860b0c9e964858e80d702/classes.dex" />
     </item>
     <item

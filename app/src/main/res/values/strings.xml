@@ -53,6 +53,8 @@
     </string-array>
 
     <string name="languages_prompt">Choose a city</string>
+    <string name="i_m_a_student">I\'m a student</string>
+    <string name="i_m_a_tuter">I\'m a tuter</string>
     <string-array name="languages_arrays">
         <item>Choose a Language</item>
         <item>English</item>

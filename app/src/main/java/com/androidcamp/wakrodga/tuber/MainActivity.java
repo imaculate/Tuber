@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static final ArrayList<Tutor> tutors = new ArrayList<>();
 
     private static final int RC_SIGN_IN = 1;
+    private static final int RESULT_OK = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,21 +140,26 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         startActivityForResult(
                 AuthUI.getInstance().createSignInIntentBuilder()
                         .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
+                        .setTheme(R.style.SuperAppTheme)
                         .build(),
                 RC_SIGN_IN);
+       // startActivity(new Intent(this, FormActivity.class));
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if ((requestCode == RC_SIGN_IN) && (requestCode == RESULT_OK)) {
-            // Logged in!
-            //startActivity(new Intent(this, WelcomeBackActivity.class));
-            //finish();
-            Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
-        }
-
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN)
+            if (requestCode == RESULT_OK) {
+                // Logged in!
+                startActivity(new Intent(this, FormActivity.class));
+                //AuthUI.getInstance()
+                  //      .signOut(this);
+                finish();
+                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
+            }
     }
+
 
 
 
