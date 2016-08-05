@@ -130,9 +130,13 @@ public class TutorFormActivity extends AppCompatActivity {
         t.setReputation((double) 0);
         if(checkBox1.isChecked()) {
             t.setFrontal(true);
+        } else {
+            t.setFrontal(false);
         }
         if(checkBox2.isChecked()) {
             t.setOnline(true);
+        } else {
+            t.setOnline(false);
         }
         t.setImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-128.png");
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
