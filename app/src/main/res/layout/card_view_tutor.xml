@@ -1,8 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+
+
+    >
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view_tutor"
@@ -10,7 +12,9 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         card_view:cardCornerRadius="4dp"
-        card_view:cardUseCompatPadding="true">
+        card_view:cardUseCompatPadding="true"
+
+        >
 
         <ImageView
 
@@ -37,7 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_favorite_black_36dp">
+            android:src="@drawable/ic_favorite_border_black_36dp"
+            android:tint="@color/red"
+            android:clickable="true">
         </ImageView>
 
 

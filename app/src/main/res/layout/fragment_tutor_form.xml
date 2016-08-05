@@ -28,21 +28,12 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     />
-                <TextView
-                    android:id="@+id/country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/place_icon"
-                    android:layout_centerVertical="true"
-                    android:text="Country"/>
                 <Spinner
                     android:id="@+id/countries"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/place_icon"
                     android:entries="@array/country_arrays"
                     android:prompt="@string/country_prompt" />
 
@@ -62,22 +53,14 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     />
-                <TextView
-                    android:id="@+id/city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/place_icon2"
-                    android:layout_centerVertical="true"
-                    android:text="City"/>
+
                 <Spinner
                     android:id="@+id/cities"
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
+                  android:layout_toRightOf="@id/place_icon2"
                     android:entries="@array/city_arrays"
                     android:prompt="@string/city_prompt" />
 
@@ -97,22 +80,14 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     />
-                <TextView
-                    android:id="@+id/subject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/subjects_icon"
-                    android:layout_centerVertical="true"
-                    android:text="Subject"/>
+
                 <Spinner
                     android:id="@+id/subjects"
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
+                   android:layout_toRightOf="@id/subjects_icon"
                     android:entries="@array/subjects_arrays"
                     android:prompt="@string/subjects_prompt" />
 
@@ -132,22 +107,14 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     />
-                <TextView
-                    android:id="@+id/language"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/lang_icon"
-                    android:layout_centerVertical="true"
-                    android:text="Language"/>
+
                 <Spinner
                     android:id="@+id/languages"
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
+                  android:layout_toRightOf="@id/lang_icon"
                     android:entries="@array/languages_arrays"
                     android:prompt="@string/languages_prompt" />
 
@@ -158,30 +125,37 @@
                 android:layout_marginTop="20dp"
                 android:id="@+id/frontal"
                 android:layout_width="wrap_content"
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
                 android:text="Frontal Lessons" />
 
             <CheckBox
                 android:id="@+id/online"
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
-                android:text="On-line Lessons"
-                android:checked="true" />
+                android:text="On-line Lessons" />
+
 
 
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_marginTop="100dp"
-                android:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
+                android:backgroundTint="@color/colorPrimary"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="clickedApply"
-                android:text="Apply" />
+                android:text="Apply"
+                android:textSize="24dp"
+                android:onClick="clickedApply"/>
+
+
 
         </LinearLayout>
     </ScrollView>

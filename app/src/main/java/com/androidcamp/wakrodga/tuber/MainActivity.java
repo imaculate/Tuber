@@ -3,8 +3,6 @@ package com.androidcamp.wakrodga.tuber;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -78,25 +76,6 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         //AuthUI.getInstance().signOut(this);
 
         FragmentManager fragMan = getSupportFragmentManager();
-
-        mSectionsPagerAdapter = new SectionsPagerAdapter(fragMan);
-
-        // Set up the ViewPager  with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
-        tabLayout.setupWithViewPager(mViewPager);
-
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);
-        myFab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,SearchActivity.class);
-                startActivity(i);
-            }
-        });
-
-
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
