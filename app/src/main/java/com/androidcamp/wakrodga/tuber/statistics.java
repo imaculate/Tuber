@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import java.util.Random;
 import az.plainpie.PieView;
 
 
-public class Statistics extends AppCompatActivity implements Database.onDataChanged {
+public class Statistics extends AppCompatActivity implements Database.onDataChanged, Database.onChildChanged {
 
 
     @Override
@@ -37,6 +38,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
 
         Database database = Database.getDatabaseInstance();
         database.setDataChangedListener(this);
+        database.setChildlistener(this);
 
         PieView pieView = (PieView) findViewById(R.id.pieView);
         pieView.setPercentageBackgroundColor(getResources().getColor(R.color.colorAccent2));
@@ -64,7 +66,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         Tutor me = new Tutor();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         boolean isMe = false;
-        for (Tutor t : Database.tutors) {
+        for (Tutor t : Database.getDatabaseInstance().tutors) {
             if(t.getName().equals(auth.getCurrentUser().getDisplayName())){
                 me=t;
                 isMe=true;
@@ -85,8 +87,8 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
             }
             Random r = new Random();
             int index = 0;
-            if(mySubjects.size()>1)
-                index = r.nextInt(mySubjects.size()-1);
+            /*if(mySubjects.size()>1)
+                index = r.nextInt(mySubjects.size()-1);*/
             long result = Math.round(findLowerPrices(mySubjects, (double) me.getPrice()));
             double averagePrice = Math.round(averagePrice(mySubjects));
             long result2 = Math.round(sameSubject(mySubjects.get(index)));
@@ -102,7 +104,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         double percentage = 0;
         int count = 0;
         int countLower = 0;
-        for(Tutor t : Database.tutors) {
+        for(Tutor t : Database.getDatabaseInstance().tutors) {
             for(String mySubject : mySubjects) {
                 if (t.getSubjects().values().contains(mySubject)) {
                     count++;
@@ -121,7 +123,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         double average = 0;
         int count = 0;
         int sum = 0;
-        for(Tutor t : Database.tutors) {
+        for(Tutor t : Database.getDatabaseInstance().tutors) {
             for(String mySubject : mySubjects) {
                 if (t.getSubjects().values().contains(mySubject)) {
                     count++;
@@ -137,7 +139,7 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
         double percentage = 0;
         int count = 0;
         int countSubject = 0;
-        for(Tutor t : Database.tutors) {
+        for(Tutor t : Database.getDatabaseInstance().tutors) {
             if(t.getSubjects().values().contains(mySubject)){
                 countSubject++;
             }
@@ -185,4 +187,10 @@ public class Statistics extends AppCompatActivity implements Database.onDataChan
     public void onDataChange() {
         doMaths();
     }
+
+    @Override
+    public void onChildChange() {
+        doMaths();
+    }
+
 }

@@ -24,6 +24,7 @@ public class Database {
 
     public static Set<String> names = new HashSet<>();
     private  onDataChanged listener;
+    private  onChildChanged childListener;
 
     private Database() {
 
@@ -43,21 +44,66 @@ public class Database {
         public void onDataChange();
     }
 
+    public interface onChildChanged {
+        public void onChildChange();
+    }
+
     public void setDataChangedListener(onDataChanged listener) {
         this.listener = listener;
     }
 
+    public  void setChildlistener(onChildChanged listener) {
+        childListener = listener;
+    }
 
     private void addListeners() {
        // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference tutorsRef = rootRef.child("tutors");
         tutorsRef.addValueEventListener(getTutorsValueEventListener());
+        tutorsRef.addChildEventListener(getChildListener());
 
         DatabaseReference studentsRef = rootRef.child("students");
 
     }
 
+
+    private  ChildEventListener getChildListener() {
+        return new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Tutor tutor = dataSnapshot.getValue(Tutor.class);
+                for(Tutor t : tutors) {
+                    if(tutor.getName().equals(t.getName())) {
+                        tutors.remove(t);
+                        tutors.add(tutor);
+                        break;
+                    }
+                }
+                childListener.onChildChange();
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+    }
 
     private ValueEventListener getTutorsValueEventListener() {
         return new ValueEventListener() {
