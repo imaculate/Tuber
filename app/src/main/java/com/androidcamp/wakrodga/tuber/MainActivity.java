@@ -137,10 +137,17 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
 
         startActivityForResult(
                 AuthUI.getInstance().createSignInIntentBuilder()
-                        .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
                         .setTheme(R.style.SuperAppTheme)
+                        //.setBackground(R.color.colorPrimaryDark)
+                        .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
+
                         .build(),
                 RC_SIGN_IN);
+
+
+
+
+
        // startActivity(new Intent(this, FormActivity.class));
     }
 

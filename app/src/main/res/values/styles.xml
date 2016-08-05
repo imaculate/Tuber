@@ -10,9 +10,10 @@
 
     <style name="SuperAppTheme" parent="FirebaseUI">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/pink</item>
         <item name="android:logo">@mipmap/ic_launcher</item>
+        <!--<item name="android:background">@color/colorPrimaryDark</item>-->
         <!--<item name="android:textSize">20sp</item>-->
         <!--<item name="android:icon">@drawable/love_icon</item>-->
     </style>

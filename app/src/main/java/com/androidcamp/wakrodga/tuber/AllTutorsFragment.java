@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v4.app.ServiceCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -45,7 +47,7 @@ import java.util.ArrayList;
  * Use the {@link AllTutorsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AllTutorsFragment extends Fragment {
+public class AllTutorsFragment extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ListView listView = null;
@@ -106,7 +108,21 @@ public class AllTutorsFragment extends Fragment {
 //                tutors.add(tutor);
 //            }
 //        });
+
+
+
+        mListener = new OnFragmentInteractionListener()
+        {
+
+            @Override
+            public void onFragmentInteraction() {
+                Intent i = new Intent(getContext(),Profile.class);
+                startActivity(i);
+            }
+        };
+
         adapter = new MyAdapter();
+
         Intent i = getActivity().getIntent();
         if (i.getStringExtra(MainPage.FILTER_RESULT) != null) {
             adapter.setTutors(SearchActivity.tutorsAfterSearch);
@@ -115,14 +131,20 @@ public class AllTutorsFragment extends Fragment {
         // adapter.setTutors();
         listView = (ListView) v.findViewById(R.id.tutor_list_view);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+
+
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(),"Item clicked!", Toast.LENGTH_SHORT).show();
                 Tutor tutor = (Tutor) adapterView.getItemAtPosition(i);
                 mListener.onFragmentInteraction();
 
             }
-        });
+        });*/
         return v;
     }
 
@@ -189,12 +211,24 @@ public class AllTutorsFragment extends Fragment {
             return globalTutors.get(position).hashCode();
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             View view;
             ViewHolder holder;
             if (null == convertView) {
                 LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
                 view = inflater.inflate(R.layout.card_view_tutor, null);
+
+                CardView card = (CardView) view.findViewById(R.id.card_view_tutor);
+                card.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Toast.makeText(getContext(),"clicked "+Database.tutors.get(position).name,Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent (getContext(), Profile.class);
+                        i.putExtra("id",position);
+                        startActivity(i);
+                    }
+                });
 
                 holder = new ViewHolder();
                 holder.name = (TextView) view.findViewById(R.id.name);
