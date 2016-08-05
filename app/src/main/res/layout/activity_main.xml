@@ -4,27 +4,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-    <include layout="@layout/toolbar"/>
-
-
-    <android.support.design.widget.TabLayout
-        android:background="@color/shadowColor"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minWidth="400dp"
-        app:tabBackground="@color/pink"
-        android:id="@+id/tabslayout"
-        app:tabTextColor="@color/colorPrimaryDark">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </android.support.design.widget.TabLayout>
+        <include layout="@layout/toolbar"/>
 
-    <android.support.v4.view.ViewPager
+
+        <android.support.design.widget.TabLayout
+            android:background="@color/background"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:minWidth="400dp"
+            app:tabBackground="@color/pink"
+            app:tabGravity="fill"
+            android:id="@+id/tabslayout"
+            app:tabTextColor="@color/colorPrimaryDark">
+
+
+        </android.support.design.widget.TabLayout>
+
+
+        <android.support.v4.view.ViewPager
 
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -32,9 +34,9 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
 
-     </android.support.v4.view.ViewPager>
+        </android.support.v4.view.ViewPager>
 
-</LinearLayout>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
