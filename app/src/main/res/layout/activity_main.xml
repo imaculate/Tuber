@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:src="@drawable/search"
+        android:src="@drawable/ic_search_black_36dp"
         app:layout_anchor="@id/container"
         app:layout_anchorGravity="center_vertical|right"/>
 

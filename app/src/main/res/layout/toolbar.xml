@@ -7,7 +7,6 @@
     android:layout_height="wrap_content"
     app:logo="@mipmap/beach"
     app:title="TUBER"
-    android:titleMargin="10dp"
     app:titleTextAppearance="@style/Toolbar.TitleText"
     app:titleTextColor="@color/colorPrimaryDark"
     xmlns:android="http://schemas.android.com/apk/res/android"

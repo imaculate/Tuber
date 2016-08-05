@@ -10,10 +10,10 @@ public class Tutor {
 
     public String city;
     public String country;
-    public Boolean frontal;
+    public Boolean frontal = false;
     public Map<String,String> languages;
     public String name;
-    public Boolean online;
+    public Boolean online = false;
     public Long price;
     public String image;
     public Double reputation;

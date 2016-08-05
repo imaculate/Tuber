@@ -219,22 +219,12 @@ public class AllTutorsFragment extends Fragment  {
         public View getView(final int position, View convertView, ViewGroup parent) {
             View view;
             final ViewHolder holder;
+
             if (null == convertView) {
                 LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
                 view = inflater.inflate(R.layout.card_view_tutor, null);
 
                 CardView card = (CardView) view.findViewById(R.id.card_view_tutor);
-                card.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        Toast.makeText(getContext(),"clicked "+Database.tutors.get(position).name,Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent (getContext(), Profile.class);
-                        i.putExtra("id",position);
-                        startActivity(i);
-                    }
-                });
-
                 holder = new ViewHolder();
                 holder.name = (TextView) view.findViewById(R.id.name);
                 holder.ratingBar = (RatingBar) view.findViewById(R.id.radingBar);
@@ -260,13 +250,24 @@ public class AllTutorsFragment extends Fragment  {
 
                 holder.subjects = (TextView) view.findViewById(R.id.tutors_subjects_textView);
                 view.setTag(holder);
+
+                card.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Tutor tutor = holder.tutor;
+                        Toast.makeText(getContext(),"clicked "+tutor.name,Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent (getContext(), Profile.class);
+                        i.putExtra("id", globalTutors.indexOf(tutor));
+                        startActivity(i);
+                    }
+                });
             } else {
                 view = convertView;
                 holder = (ViewHolder) view.getTag();
-
             }
 
             Tutor current = globalTutors.get(position);
+            holder.tutor = current;
             holder.name.setText(current.getName());
             if(current.reputation != null)
                 holder.ratingBar.setRating(current.reputation.floatValue());
@@ -283,7 +284,7 @@ public class AllTutorsFragment extends Fragment  {
                 }
             }
             holder.subjects.setText(subjects);
-            Picasso.with(getActivity().getApplicationContext()).load(current.getImage()).into(holder.image);
+            Picasso.with(getActivity().getApplicationContext()).load(current.getImage()).error(R.drawable.com_facebook_profile_picture_blank_portrait).into(holder.image);
             holder.image.setOutlineProvider(new OvalOutlineProvider());
 
             return view;
@@ -296,7 +297,7 @@ public class AllTutorsFragment extends Fragment  {
             public ImageView image;
             public ImageView like;
             public TextView subjects;
-
+            public Tutor tutor;
         }
 
     }
