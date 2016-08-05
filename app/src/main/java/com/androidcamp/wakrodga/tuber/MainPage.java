@@ -2,7 +2,6 @@ package com.androidcamp.wakrodga.tuber;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -29,19 +28,12 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ui.email.SignInActivity;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
 
-public class MainActivity extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener{
+public class MainPage extends AppCompatActivity implements AllTutorsFragment.OnFragmentInteractionListener{
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -49,13 +41,16 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     public static String TAG_MY = "my_tutors";
     public static String TAG_FAV = "fav_tutors";
 
+    public static final String FILTER_RESULT = "filterResult";
+
+    @Override
+    public void onFragmentInteraction() {
+
+    }
+
     public static String TITLE_ALL = "ALL TUTORS";
     public static String TITLE_MY = "MY TUTORS";
     public static String TITLE_FAV = "FAVORITES";
-
-    private FirebaseAuth mAuth;
-
-
 
     public static final ArrayList<Tutor> tutors = new ArrayList<>();
 
@@ -65,11 +60,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_main);
-
-
-        mAuth = FirebaseAuth.getInstance();
-
+        setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -85,69 +76,72 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         mViewPager = (ViewPager) findViewById(R.id.container);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabslayout);
         tabLayout.setupWithViewPager(mViewPager);
-
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         FloatingActionButton myFab = (FloatingActionButton)findViewById(R.id.fab);
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,SearchActivity.class);
+                Intent i = new Intent(MainPage.this,SearchActivity.class);
                 startActivity(i);
             }
         });
+        /*ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+                if(tab.getText().equals(TITLE_ALL)){
+                    FragmentManager fragMan = getSupportFragmentManager();
+                    FragmentTransaction fragTransaction = fragMan.beginTransaction();
+                    AllTutorsFragment frag = new AllTutorsFragment();
+
+                    fragTransaction.replace(R.id.fragment_container,frag , TAG_ALL ).commit();
 
 
+                }else if(tab.getText().equals(TITLE_MY)){
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
-            // already signed in
-            Log.d("BUGBUG","user is already signed in, lets move to fromActivity");
-            startActivity(new Intent(this, FormActivity.class));
-            finish();
-        } else {
-            // not signed in
-            Log.d("BUGBUG","user is NOT signed in, lets show sign in options");
-            startActivityForResult(
-                    AuthUI.getInstance().createSignInIntentBuilder()
-                            .setProviders(AuthUI.FACEBOOK_PROVIDER,AuthUI.GOOGLE_PROVIDER,AuthUI.EMAIL_PROVIDER)
-                            .setTheme(R.style.SuperAppTheme)
-                            .build(),
-                    RC_SIGN_IN);
-        }
-    }
+                }else{
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN)
-            if (requestCode == RESULT_OK) {
+                }
 
-                // Logged in!
-                startActivity(new Intent(this, FormActivity.class));
-
-
-                finish();
             }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+            }
+        };
+
+        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        ActionBar.Tab tab_one = getSupportActionBar().newTab();
+
+        tab_one.setTabListener(tabListener);
+        tab_one.setText(TITLE_ALL);
+        getSupportActionBar().addTab(tab_one);
+
+        ActionBar.Tab tab_two = getSupportActionBar().newTab();
+        tab_two.setTabListener(tabListener);
+        tab_two.setText(TITLE_MY);
+        getSupportActionBar().addTab(tab_two);
+
+        ActionBar.Tab tab_three = getSupportActionBar().newTab();
+        tab_three.setTabListener(tabListener);
+        tab_three.setText(TITLE_FAV);
+        getSupportActionBar().addTab(tab_three);
+
+
+        FragmentTransaction fragTransaction = fragMan.beginTransaction();
+        AllTutorsFragment frag = new AllTutorsFragment();
+
+        fragTransaction.add(R.id.fragment_container,frag , TAG_ALL ).commit();*/
+
     }
 
 
-
-    @Override
-    public void onFragmentInteraction() {
-
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-     }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,8 +156,7 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
         switch (menuItem.getItemId()) {
             case R.id.edit:
                 Toast.makeText(this, "EDITED", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, Statistics.class);
-                startActivity(intent);
+
                 break;
             case R.id.log_out:
                 Toast.makeText(this, "LOGED_OUT", Toast.LENGTH_SHORT).show();
@@ -172,9 +165,8 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             public void onComplete(@NonNull Task<Void> task) {
                                 // user is now signed out
-                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                startActivity(new Intent(MainPage.this, MainActivity.class));
                                 finish();
-                                FirebaseAuth.getInstance().signOut();
                             }
                         });
                 break;
@@ -216,6 +208,4 @@ public class MainActivity extends AppCompatActivity implements AllTutorsFragment
             return null;
         }
     }
-
-
 }
