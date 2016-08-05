@@ -2,18 +2,23 @@ package com.androidcamp.wakrodga.tuber;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Outline;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ServiceCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -44,6 +49,12 @@ public class AllTutorsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ListView listView = null;
+    public static MyAdapter adapter;
+
+
+    public static void setTutors(ArrayList<Tutor> t) {
+        adapter.setTutors(t);
+    }
 
     private OnFragmentInteractionListener mListener;
 
@@ -79,27 +90,35 @@ public class AllTutorsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Database database = new Database();
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_all_tutors, container, false);
 
 
-        Database database = new Database();
-        final ArrayList<Tutor> tutors = new ArrayList<>();
+       // Database database = new Database();
+        final ArrayList<Tutor> tutors = Database.tutors;
 
-        database.addOnTutorReadyListener(new Database.OnTutorListener() {
-            @Override
-            public void onTutorReady(Tutor tutor) {
-                tutors.add(tutor);
-            }
-        });
-        MyAdapter adapter = new MyAdapter();
-       // adapter.setTutors();
+//        database.addOnTutorReadyListener(new Database.OnTutorListener() {
+//            @Override
+//            public void onTutorReady(Tutor tutor) {
+//                tutors.add(tutor);
+//            }
+//        });
+        adapter = new MyAdapter();
+        Intent i = getActivity().getIntent();
+        if (i.getStringExtra(MainPage.FILTER_RESULT) != null) {
+            adapter.setTutors(SearchActivity.tutorsAfterSearch);
+        }
+
+        // adapter.setTutors();
         listView = (ListView) v.findViewById(R.id.tutor_list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Tutor tutor = (Tutor)adapterView.getItemAtPosition(i);
+                Tutor tutor = (Tutor) adapterView.getItemAtPosition(i);
                 mListener.onFragmentInteraction();
 
             }
@@ -125,6 +144,8 @@ public class AllTutorsFragment extends Fragment {
         }
     }
 
+
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -147,61 +168,88 @@ public class AllTutorsFragment extends Fragment {
     }
 
     private class MyAdapter extends BaseAdapter {
-        private  ArrayList<Tutor> globalTutors= Database.tutors;;
+        public ArrayList<Tutor> globalTutors = Database.tutors;
 
-        public int getCount(){
+        public void setTutors(ArrayList<Tutor> tutors) {
+            globalTutors = tutors;
+            notifyDataSetChanged();
+        }
+        ;
+
+        public int getCount() {
             return globalTutors.size();
         }
-        public Object getItem(int position){
+
+        public Object getItem(int position) {
             return globalTutors.get(position);
 
         }
 
-        public long getItemId(int position){
+        public long getItemId(int position) {
             return globalTutors.get(position).hashCode();
         }
 
-        public View getView(int position, View convertView, ViewGroup parent){
+        public View getView(int position, View convertView, ViewGroup parent) {
             View view;
             ViewHolder holder;
-            if(null== convertView){
-                LayoutInflater inflater =  LayoutInflater.from(getActivity().getApplicationContext());
-                view = inflater.inflate(R.layout.tutor_view, null);
+            if (null == convertView) {
+                LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
+                view = inflater.inflate(R.layout.card_view_tutor, null);
 
                 holder = new ViewHolder();
-                holder.name =  (TextView) view.findViewById(R.id.name);
-                holder.reputation = (TextView) view.findViewById(R.id.rating);
+                holder.name = (TextView) view.findViewById(R.id.name);
+                holder.ratingBar = (RatingBar) view.findViewById(R.id.radingBar);
                 holder.city = (TextView) view.findViewById(R.id.city);
-                holder.country = (TextView) view.findViewById(R.id.country);
-                holder.image = (ImageView)view.findViewById(R.id.tutor_image);
+                holder.image = (ImageView) view.findViewById(R.id.tutor_image);
+
+                holder.subjects = (TextView) view.findViewById(R.id.tutors_subjects_textView);
                 view.setTag(holder);
-            }else{
+            } else {
                 view = convertView;
-                holder = (ViewHolder)view.getTag();
+                holder = (ViewHolder) view.getTag();
 
             }
 
             Tutor current = globalTutors.get(position);
             holder.name.setText(current.getName());
-            holder.reputation.setText(current.getReputation());
-            holder.city.setText(current.getCity());
-            holder.country.setText(current.getCountry());
+            holder.ratingBar.setRating(current.reputation.floatValue());
+            holder.city.setText(current.getCity() + ", " + current.getCountry());
+            String subjects = "Teaches: ";
+            for (String string : current.getSubjects().values()) {
+                subjects += string + ", ";
+                if (subjects.length() > 50) {
+                    subjects += "...";
+                    break;
+                }
+            }
+            holder.subjects.setText(subjects);
             Picasso.with(getActivity().getApplicationContext()).load(current.getImage()).into(holder.image);
-
-
-
+            holder.image.setOutlineProvider(new OvalOutlineProvider());
 
             return view;
         }
 
-        private class ViewHolder{
+        private class ViewHolder {
             public TextView name;
-            public TextView reputation;
+            public RatingBar ratingBar;
             public TextView city;
-            public TextView country;
             public ImageView image;
+            public TextView subjects;
 
         }
 
     }
+
+    static class OvalOutlineProvider extends ViewOutlineProvider {
+
+        @Override
+
+        public void getOutline(View view, Outline outline) {
+
+            outline.setOval(0, 0, view.getWidth(), view.getHeight());
+
+        }
+
+    }
+
 }

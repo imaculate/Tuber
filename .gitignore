@@ -7,6 +7,8 @@ gradle/wrapper
 .gradle/2.10/taskArtifacts/outputFileStates.bin
 .gradle/2.10/taskArtifacts/taskArtifacts.bin
 .idea/.name
+.idea/libraries/design_24_1_0.xml
+.idea/libraries/recyclerview_v7_24_1_0.xml
 .idea/compiler.xml
 .idea/copyright/profiles_settings.xml
 .idea/encodings.xml
