@@ -67,9 +67,11 @@ public class Profile extends AppCompatActivity {
         TextView tv4 = (TextView)findViewById(R.id.profile_subjects);
 
         String sub = "";
-        for(String s: tutor.getSubjects().values())
-            sub += s+", ";
-        sub = sub.substring(0,sub.length()-2);
+        if(tutor.getSubjects() != null) {
+            for (String s : tutor.getSubjects().values())
+                sub += s + ", ";
+            sub = sub.substring(0, sub.length() - 2);
+        }
         tv4.setText(sub);
 
         TextView tv5 = (TextView)findViewById(R.id.profile_lang);
