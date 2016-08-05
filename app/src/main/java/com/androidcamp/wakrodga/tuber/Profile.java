@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.Outline;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.design.widget.FloatingActionButton;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,9 +70,11 @@ public class Profile extends AppCompatActivity {
         TextView tv4 = (TextView)findViewById(R.id.profile_subjects);
 
         String sub = "";
-        for(String s: tutor.getSubjects().values())
-            sub += s+", ";
-        sub = sub.substring(0,sub.length()-2);
+        if(tutor.getSubjects() != null) {
+            for (String s : tutor.getSubjects().values())
+                sub += s + ", ";
+            sub = sub.substring(0, sub.length() - 2);
+        }
         tv4.setText(sub);
 
         TextView tv5 = (TextView)findViewById(R.id.profile_lang);
