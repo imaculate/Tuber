@@ -63,7 +63,7 @@ public class AllTutorsFragment extends Fragment  {
     }
 
     private OnFragmentInteractionListener mListener;
-
+    private boolean isFav;
     public AllTutorsFragment() {
         // Required empty public constructor
     }
@@ -100,7 +100,7 @@ public class AllTutorsFragment extends Fragment  {
         adapter = new MyAdapter();
 
         Database database = new Database();
-
+        isFav = getArguments().getBoolean("fav");
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_all_tutors, container, false);
 
@@ -135,6 +135,7 @@ public class AllTutorsFragment extends Fragment  {
         // adapter.setTutors();
         listView = (ListView) v.findViewById(R.id.tutor_list_view);
         listView.setAdapter(adapter);
+
 
 
 
@@ -244,6 +245,11 @@ public class AllTutorsFragment extends Fragment  {
                 holder.image.setOutlineProvider(new OvalOutlineProvider());
                 holder.image.setClipToOutline(true);
                 holder.like = (ImageView)view.findViewById(R.id.fav);
+                if(isFav){
+                    holder.like.setImageResource(R.drawable.ic_favorite_black_36dp);
+                }
+                holder.like.setColorFilter(Color.argb(255, 255, 0, 0));
+                holder.like.setContentDescription("border");
                 holder.like.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
