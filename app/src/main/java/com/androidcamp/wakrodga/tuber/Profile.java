@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Outline;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.design.widget.FloatingActionButton;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,7 +48,7 @@ public class Profile extends AppCompatActivity {
         Integer id = intent.getIntExtra("id",-1);
         //if(id != -1)
           //  Toast.makeText(Profile.this,"the id:"+id,Toast.LENGTH_SHORT).show();
-        Tutor tutor = Database.tutors.get(id);
+        final Tutor tutor = Database.tutors.get(id);
 
         ImageView v = (ImageView) findViewById(R.id.profile_image);
 
@@ -94,6 +96,16 @@ public class Profile extends AppCompatActivity {
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.online_profile);
         checkBox1.setChecked(tutor.getFrontal());
         checkBox2.setChecked(tutor.getOnline());
+
+
+        FloatingActionButton  bookButton = (FloatingActionButton)findViewById(R.id.book_fab);
+        bookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Profile.this, "Request has been to sent to "+tutor.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
     }
